@@ -510,9 +510,52 @@ export const faqs = [
 
 export const contact = {
   email: "info@cynosurerecycling.com",
-  phone: "+91-000-000-0000",
-  headOffice: "Meerut, Uttar Pradesh, India",
+  phone: "1800 889 5020",
+  phoneHref: "tel:18008895020",
+  headOffice: "Khasra no. 64, Village Peeplikhera, Pargana Sarawa, Meerut, Uttar Pradesh - 250002",
+  openingHours: "09:30 am - 06:00 pm",
 };
+
+export const galleryCategories = ["All", "Machines", "Outdoor", "Office", "Storage Area"] as const;
+
+export const galleryItems: { id: number; title: string; category: (typeof galleryCategories)[number] }[] = [
+  { id: 1, title: "Dismantling Line", category: "Machines" },
+  { id: 2, title: "Automated Chopressor Cutting Machines", category: "Machines" },
+  { id: 3, title: "ID Fans & Ducting Lines", category: "Machines" },
+  { id: 4, title: "Heavy Material Dismantling Area", category: "Machines" },
+  { id: 5, title: "Reception", category: "Office" },
+  { id: 6, title: "Multipurpose Shredder", category: "Machines" },
+  { id: 7, title: "Component Recovery Machine", category: "Machines" },
+  { id: 8, title: "Gas Recovery Area", category: "Machines" },
+  { id: 9, title: "Material Storage Area", category: "Storage Area" },
+  { id: 10, title: "Compressor Oil Recovery Machine", category: "Machines" },
+  { id: 11, title: "Material Storage Area", category: "Storage Area" },
+  { id: 12, title: "Hazardous Waste Room", category: "Storage Area" },
+  { id: 13, title: "ETP", category: "Outdoor" },
+  { id: 14, title: "Green Belt", category: "Outdoor" },
+  { id: 15, title: "Green Belt", category: "Outdoor" },
+  { id: 16, title: "Dust Collection System", category: "Machines" },
+  { id: 17, title: "Cyclone and Wet Scrubber", category: "Machines" },
+  { id: 18, title: "Furnace", category: "Machines" },
+  { id: 19, title: "Director Room", category: "Office" },
+  { id: 20, title: "Entrance", category: "Outdoor" },
+  { id: 21, title: "Front View", category: "Outdoor" },
+  { id: 22, title: "Left Side View", category: "Outdoor" },
+  { id: 23, title: "Right Side View", category: "Outdoor" },
+  { id: 24, title: "Staff Parking Area", category: "Outdoor" },
+  { id: 25, title: "Emergency Assembly Area", category: "Outdoor" },
+  { id: 26, title: "Security", category: "Office" },
+  { id: 27, title: "Utilities", category: "Outdoor" },
+  { id: 28, title: "Dedicated Storage Area", category: "Storage Area" },
+  { id: 29, title: "Our Team", category: "Office" },
+  { id: 30, title: "Our Team", category: "Office" },
+];
+
+export const certificateDocs = [
+  { code: "ISO 9001:2015", label: "Quality Management Systems", image: "/images/certificates/iso-9001-2015.jpg" },
+  { code: "ISO 14001:2015", label: "Environmental Management Systems", image: "/images/certificates/iso-14001-2015.jpg" },
+  { code: "ISO 45001:2018", label: "Occupational Health & Safety Management", image: "/images/certificates/iso-45001-2018.jpg" },
+];
 
 type NavChild = {
   label: string;
@@ -540,6 +583,14 @@ export const navigation: NavItem[] = [
       { label: "Data Destruction & ITAD", href: "/services#data-destruction" },
       { label: "EPR Compliance", href: "/services#epr" },
     ],
+  },
+  {
+    label: "Gallery",
+    href: "/gallery",
+  },
+  {
+    label: "Certificates",
+    href: "/certificates",
   },
   {
     label: "Facilities",

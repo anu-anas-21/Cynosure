@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import { facilities, contact } from "@/lib/content";
@@ -25,12 +25,12 @@ export default function ContactPage() {
             <h2 className="text-2xl font-light text-ink-600">Get in touch</h2>
             <div className="mt-6 space-y-4">
               <a
-                href={`tel:${contact.phone}`}
+                href={contact.phoneHref}
                 className="flex items-center gap-4 rounded-xl border border-ink-100 p-5 hover:border-brand-300 transition-colors"
               >
                 <Phone className="size-5 text-brand-500" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">Call us</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">Toll Free</p>
                   <p className="font-medium text-ink-800">{contact.phone}</p>
                 </div>
               </a>
@@ -47,8 +47,15 @@ export default function ContactPage() {
               <div className="flex items-center gap-4 rounded-xl border border-ink-100 p-5">
                 <MapPin className="size-5 text-brand-500" />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">Head office</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">Visit Us</p>
                   <p className="font-medium text-ink-800">{contact.headOffice}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 rounded-xl border border-ink-100 p-5">
+                <Clock className="size-5 text-brand-500" />
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">Opening Hours</p>
+                  <p className="font-medium text-ink-800">{contact.openingHours}</p>
                 </div>
               </div>
             </div>
