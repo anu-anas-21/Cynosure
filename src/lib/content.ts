@@ -236,32 +236,32 @@ export const stats = [
 
 export const facilities = [
   {
-    city: "Meerut",
-    region: "Uttar Pradesh",
+    city: "Uttar Pradesh",
+    region: "North India Hub",
     status: "operational" as const,
     note: "Founding facility and central hub serving North India.",
   },
   {
-    city: "Hyderabad",
-    region: "Telangana",
+    city: "Telangana",
+    region: "South India",
     status: "operational" as const,
     note: "Serving South India's e-waste and material recovery needs.",
   },
   {
-    city: "Chennai",
-    region: "Tamil Nadu",
+    city: "Tamil Nadu",
+    region: "South India",
     status: "operational" as const,
     note: "Complements Hyderabad in serving South India.",
   },
   {
-    city: "Pune",
-    region: "Maharashtra",
+    city: "Maharashtra",
+    region: "Western India",
     status: "upcoming" as const,
     note: "New plant opening soon to serve Western India.",
   },
   {
-    city: "Bangalore",
-    region: "Karnataka",
+    city: "Karnataka",
+    region: "Southern India",
     status: "upcoming" as const,
     note: "New plant opening soon to strengthen Southern India coverage.",
   },
