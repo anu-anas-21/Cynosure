@@ -104,8 +104,8 @@ export default function Home() {
           <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               <>
-                <span className="font-medium">Owned facilities</span> in Meerut,
-                Hyderabad &amp; Chennai delivering consistent programs
+                <span className="font-medium">Owned facilities</span> in Uttar
+                Pradesh, Telangana &amp; Tamil Nadu delivering consistent programs
               </>,
               <>
                 <span className="font-medium">Certified, audit-ready</span>{" "}
