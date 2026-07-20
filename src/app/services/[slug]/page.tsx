@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -31,6 +32,18 @@ const streamIcons: Record<string, React.ComponentType<{ className?: string }>> =
   "elv-recycling": Car,
   "data-destruction": ShieldCheck,
   epr: FileCheck2,
+};
+
+/* Real photos from our Meerut facility, matched to the closest-fitting
+   process for each service (no per-service photography exists yet). */
+const servicePhotos: Record<string, { id: number; caption: string }> = {
+  "e-waste": { id: 7, caption: "Component recovery at our Meerut facility" },
+  "plastic-waste": { id: 6, caption: "Multipurpose shredder used in material processing" },
+  "battery-waste": { id: 12, caption: "Hazardous waste handling area at our Meerut facility" },
+  "tyre-waste": { id: 18, caption: "Furnace used in our material recovery process" },
+  "elv-recycling": { id: 4, caption: "Heavy material dismantling area at our Meerut facility" },
+  "data-destruction": { id: 1, caption: "Dismantling line at our Meerut facility" },
+  epr: { id: 19, caption: "Compliance and operations management at our Meerut facility" },
 };
 
 export function generateStaticParams() {
@@ -79,6 +92,7 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const Icon = streamIcons[slug] ?? Recycle;
+  const photo = servicePhotos[slug];
 
   const name =
     service.kind === "stream"
@@ -97,6 +111,24 @@ export default async function ServiceDetailPage({
   return (
     <>
       <PageHero eyebrow="Service" title={name} description={description} />
+
+      {photo && (
+        <section className="bg-white pt-16 sm:pt-20">
+          <div className="container-page">
+            <div className="relative aspect-[21/9] w-full overflow-hidden">
+              <Image
+                src={`/images/gallery/gal${photo.id}.jpg`}
+                alt={photo.caption}
+                fill
+                priority
+                sizes="(min-width: 1024px) 1200px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <p className="mt-3 text-xs text-ink-400">{photo.caption}</p>
+          </div>
+        </section>
+      )}
 
       <section className="py-16 sm:py-20">
         <div className="container-page">
