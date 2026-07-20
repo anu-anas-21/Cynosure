@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
@@ -63,9 +64,10 @@ export default function ContactPage() {
             <h3 className="mt-10 text-lg font-semibold text-ink-800">Our facilities</h3>
             <div className="mt-4 space-y-3">
               {facilities.map((facility) => (
-                <div
-                  key={facility.city}
-                  className="flex items-center justify-between rounded-xl bg-ink-50 px-5 py-3.5"
+                <Link
+                  key={facility.slug}
+                  href={`/facilities/${facility.slug}`}
+                  className="flex items-center justify-between rounded-xl bg-ink-50 px-5 py-3.5 transition-colors hover:bg-ink-100"
                 >
                   <div>
                     <p className="font-medium text-ink-800">{facility.city}</p>
@@ -80,7 +82,7 @@ export default function ContactPage() {
                   >
                     {facility.status === "operational" ? "Operational" : "Opening Soon"}
                   </span>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

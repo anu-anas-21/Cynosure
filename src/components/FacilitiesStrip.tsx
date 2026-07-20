@@ -31,7 +31,11 @@ export default function FacilitiesStrip() {
         {/* Facility cards with location pins */}
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {facilities.map((facility) => (
-            <div key={facility.city} className="bg-white p-6 shadow-sm">
+            <Link
+              key={facility.slug}
+              href={`/facilities/${facility.slug}`}
+              className="block bg-white p-6 shadow-sm transition-shadow hover:shadow-lg"
+            >
               <div className="flex items-center justify-between">
                 <MapPin className="size-5 text-brand-500" />
                 <span
@@ -46,7 +50,7 @@ export default function FacilitiesStrip() {
               </div>
               <h3 className="mt-4 text-xl font-normal text-ink-600">{facility.city}</h3>
               <p className="text-sm text-ink-400">{facility.region}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -55,14 +59,18 @@ export default function FacilitiesStrip() {
       <div className="mt-14 overflow-hidden border-y border-ink-100 bg-white py-8">
         <div className="flex w-max animate-marquee gap-16 px-8">
           {marqueeItems.map((facility, i) => (
-            <div key={`${facility.city}-${i}`} className="text-center">
+            <Link
+              key={`${facility.slug}-${i}`}
+              href={`/facilities/${facility.slug}`}
+              className="text-center transition-opacity hover:opacity-70"
+            >
               <p className="whitespace-nowrap text-2xl font-light text-ink-600">
                 {facility.city}
               </p>
               <p className="mt-1 whitespace-nowrap text-xs uppercase tracking-wider text-ink-400">
                 {facility.region}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

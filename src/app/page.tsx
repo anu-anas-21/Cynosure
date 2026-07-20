@@ -36,14 +36,14 @@ const serviceCards = [
   ...wasteStreams.map((stream) => ({
     title: stream.name,
     description: stream.description,
-    href: `/services#${stream.slug}`,
+    href: `/services/${stream.slug}`,
     icon: streamIcons[stream.slug] ?? Recycle,
   })),
   {
     title: "Data Destruction & ITAD",
     description:
       "Protect your data and stay compliant with secure on-site and off-site destruction for hard drives, servers, and storage devices, aligned with NIST 800-88 and DoD 5220.22-M.",
-    href: "/services#data-destruction",
+    href: "/services/data-destruction",
     icon: ShieldCheck,
   },
 ];
@@ -288,7 +288,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <Link href="/services#epr" className="btn-primary shrink-0">
+            <Link href="/services/epr" className="btn-primary shrink-0">
               Explore EPR Services
             </Link>
           </div>

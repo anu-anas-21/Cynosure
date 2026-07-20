@@ -50,18 +50,18 @@ export default function Footer() {
           <ul className="space-y-3.5">
             {wasteStreams.map((stream) => (
               <li key={stream.slug}>
-                <Link href={`/services#${stream.slug}`} className={linkStyle}>
+                <Link href={`/services/${stream.slug}`} className={linkStyle}>
                   {stream.shortName}
                 </Link>
               </li>
             ))}
             <li>
-              <Link href="/services#data-destruction" className={linkStyle}>
+              <Link href="/services/data-destruction" className={linkStyle}>
                 Data Destruction &amp; ITAD
               </Link>
             </li>
             <li>
-              <Link href="/services#epr" className={linkStyle}>
+              <Link href="/services/epr" className={linkStyle}>
                 EPR Compliance
               </Link>
             </li>
@@ -72,11 +72,13 @@ export default function Footer() {
           <h3 className={columnHeading}>Facilities</h3>
           <ul className="space-y-3.5">
             {facilities.map((facility) => (
-              <li key={facility.city} className="text-[15px] text-white">
-                {facility.city}
-                {facility.status === "upcoming" && (
-                  <span className="text-ink-400"> (soon)</span>
-                )}
+              <li key={facility.slug}>
+                <Link href={`/facilities/${facility.slug}`} className={linkStyle}>
+                  {facility.city}
+                  {facility.status === "upcoming" && (
+                    <span className="text-ink-400"> (soon)</span>
+                  )}
+                </Link>
               </li>
             ))}
           </ul>

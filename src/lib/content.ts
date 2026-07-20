@@ -33,7 +33,7 @@ export const heroSlides = [
     description:
       "On-site and off-site data destruction aligned with NIST 800-88 and DoD 5220.22-M, backed by secure chain-of-custody and certificates of destruction.",
     ctaLabel: "Find Out More About Data Security",
-    ctaHref: "/services#data-destruction",
+    ctaHref: "/services/data-destruction",
   },
   {
     eyebrow: "Sustainability With Measurable Impact",
@@ -68,7 +68,7 @@ export const insights = [
     title: "A Practical Guide to EPR Registration for Brand Owners",
     description:
       "What producers, importers, and brand owners need in place to meet CPCB targets, from documentation to real-time traceability.",
-    href: "/services#epr",
+    href: "/services/epr",
     cta: "Read More",
   },
   {
@@ -87,6 +87,7 @@ export const wasteStreams = [
     name: "E-Waste Recycling",
     shortName: "E-Waste",
     capacity: "1,00,000",
+    capacityValue: 100000,
     unit: "Metric Tonnes / Annum",
     description:
       "Secure, environmentally sound disposal of e-waste, including discarded IT assets, consumer electronics, and industrial equipment, with complete data destruction and efficient resource recovery.",
@@ -105,6 +106,7 @@ export const wasteStreams = [
     name: "Plastic Waste Recycling",
     shortName: "Plastic Waste",
     capacity: "1,00,000",
+    capacityValue: 100000,
     unit: "Metric Tonnes / Annum",
     description:
       "Effective segregation, processing, and conversion of post-consumer and industrial plastic waste streams to minimize plastic pollution and support a circular plastic economy.",
@@ -122,6 +124,7 @@ export const wasteStreams = [
     name: "Battery Waste Management",
     shortName: "Battery Waste",
     capacity: "12,000",
+    capacityValue: 12000,
     unit: "Metric Tonnes / Annum",
     description:
       "Responsible management of used batteries, from lithium-ion to lead-acid, ensuring safe extraction of hazardous materials and their reintegration into the manufacturing supply chain.",
@@ -139,6 +142,7 @@ export const wasteStreams = [
     name: "Tyre Waste Recycling",
     shortName: "Tyre Waste",
     capacity: "1,50,000",
+    capacityValue: 150000,
     unit: "Metric Tonnes / Annum",
     description:
       "Sustainable pyrolysis and mechanical processing of discarded tyres into valuable products like rubber granules, oil, and steel.",
@@ -156,6 +160,7 @@ export const wasteStreams = [
     name: "End-of-Life Vehicle Recycling",
     shortName: "ELV Recycling",
     capacity: "7,500",
+    capacityValue: 7500,
     unit: "Vehicles / Annum",
     description:
       "Dismantling, depollution, and recycling of vehicles that have reached the end of their usable life, recovering reusable parts and safely treating hazardous waste.",
@@ -172,6 +177,7 @@ export const wasteStreams = [
 ];
 
 export const dataServices = {
+  slug: "data-destruction",
   name: "Data Destruction & IT Asset Disposition",
   description:
     "On-site and off-site secure data destruction for hard drives, servers, laptops, and storage devices, aligned with NIST 800-88 and DoD 5220.22-M standards.",
@@ -200,6 +206,7 @@ export const dataServices = {
 };
 
 export const eprServices = {
+  slug: "epr",
   name: "Extended Producer Responsibility (EPR) Compliance",
   description:
     "Comprehensive, customized EPR solutions that help producers, importers, and brand owners fulfill their statutory obligations under India's E-Waste and Plastic Waste Management Rules.",
@@ -236,36 +243,61 @@ export const stats = [
 
 export const facilities = [
   {
+    slug: "uttar-pradesh",
     city: "Uttar Pradesh",
+    hubCity: "Meerut",
     region: "North India Hub",
     status: "operational" as const,
     note: "Founding facility and central hub serving North India.",
+    capacityShare: 0.4,
   },
   {
+    slug: "telangana",
     city: "Telangana",
+    hubCity: "Hyderabad",
     region: "South India",
     status: "operational" as const,
     note: "Serving South India's e-waste and material recovery needs.",
+    capacityShare: 0.3,
   },
   {
+    slug: "tamil-nadu",
     city: "Tamil Nadu",
+    hubCity: "Chennai",
     region: "South India",
     status: "operational" as const,
     note: "Complements Hyderabad in serving South India.",
+    capacityShare: 0.3,
   },
   {
+    slug: "maharashtra",
     city: "Maharashtra",
+    hubCity: "Pune",
     region: "Western India",
     status: "upcoming" as const,
     note: "New plant opening soon to serve Western India.",
+    capacityShare: 0,
   },
   {
+    slug: "karnataka",
     city: "Karnataka",
+    hubCity: "Bangalore",
     region: "Southern India",
     status: "upcoming" as const,
     note: "New plant opening soon to strengthen Southern India coverage.",
+    capacityShare: 0,
   },
 ];
+
+/** Formats a number using Indian digit grouping, e.g. 100000 -> "1,00,000". */
+export function formatIndianNumber(value: number): string {
+  const rounded = Math.round(value);
+  const str = String(rounded);
+  if (str.length <= 3) return str;
+  const lastThree = str.slice(-3);
+  const rest = str.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+  return `${rest},${lastThree}`;
+}
 
 export const differentiators = [
   {
@@ -575,13 +607,13 @@ export const navigation: NavItem[] = [
     label: "Services",
     href: "/services",
     children: [
-      { label: "E-Waste Recycling", href: "/services#e-waste" },
-      { label: "Plastic Waste Recycling", href: "/services#plastic-waste" },
-      { label: "Battery Waste Management", href: "/services#battery-waste" },
-      { label: "Tyre Waste Recycling", href: "/services#tyre-waste" },
-      { label: "End-of-Life Vehicle Recycling", href: "/services#elv-recycling" },
-      { label: "Data Destruction & ITAD", href: "/services#data-destruction" },
-      { label: "EPR Compliance", href: "/services#epr" },
+      { label: "E-Waste Recycling", href: "/services/e-waste" },
+      { label: "Plastic Waste Recycling", href: "/services/plastic-waste" },
+      { label: "Battery Waste Management", href: "/services/battery-waste" },
+      { label: "Tyre Waste Recycling", href: "/services/tyre-waste" },
+      { label: "End-of-Life Vehicle Recycling", href: "/services/elv-recycling" },
+      { label: "Data Destruction & ITAD", href: "/services/data-destruction" },
+      { label: "EPR Compliance", href: "/services/epr" },
     ],
   },
   {
@@ -596,8 +628,11 @@ export const navigation: NavItem[] = [
     label: "Facilities",
     href: "/#facilities",
     children: [
-      { label: "Our Facilities", href: "/#facilities" },
-      { label: "Find Your Nearest Facility", href: "/contact" },
+      { label: "Uttar Pradesh (Meerut)", href: "/facilities/uttar-pradesh" },
+      { label: "Telangana (Hyderabad)", href: "/facilities/telangana" },
+      { label: "Tamil Nadu (Chennai)", href: "/facilities/tamil-nadu" },
+      { label: "Maharashtra (Pune)", href: "/facilities/maharashtra" },
+      { label: "Karnataka (Bangalore)", href: "/facilities/karnataka" },
     ],
   },
   {
