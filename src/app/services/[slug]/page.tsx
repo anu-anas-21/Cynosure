@@ -112,79 +112,81 @@ export default async function ServiceDetailPage({
     <>
       <PageHero eyebrow="Service" title={name} description={description} />
 
-      {photo && (
-        <section className="bg-white pt-16 sm:pt-20">
-          <div className="container-page">
-            <div className="relative aspect-[21/9] w-full overflow-hidden">
-              <Image
-                src={`/images/gallery/gal${photo.id}.jpg`}
-                alt={photo.caption}
-                fill
-                priority
-                sizes="(min-width: 1024px) 1200px, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <p className="mt-3 text-xs text-ink-400">{photo.caption}</p>
-          </div>
-        </section>
-      )}
-
       <section className="py-16 sm:py-20">
         <div className="container-page">
-          <div className="flex size-14 items-center justify-center rounded-2xl bg-brand-500 text-white">
-            <Icon className="size-7" />
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[65%_35%] lg:gap-12">
+            <div>
+              <div className="flex size-14 items-center justify-center rounded-2xl bg-brand-500 text-white">
+                <Icon className="size-7" />
+              </div>
+
+              {service.kind === "stream" && (
+                <>
+                  <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700">
+                    National Capacity: {service.stream.capacity} {service.stream.unit}
+                  </div>
+                  <p className="mt-6 max-w-2xl text-sm font-semibold text-ink-800">
+                    Recovered outputs
+                  </p>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-500">
+                    {service.stream.outputs}
+                  </p>
+                  <div className="mt-8 rounded-2xl border border-ink-100 p-7">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">
+                      Process Flow
+                    </p>
+                    <div className="mt-5">
+                      <ProcessFlow steps={service.stream.process} />
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {service.kind === "data" && (
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {dataServices.features.map((feature) => (
+                    <div key={feature.title} className="rounded-2xl border border-ink-100 p-6">
+                      <CheckCircle2 className="size-5 text-brand-500" />
+                      <h3 className="mt-3 font-semibold text-ink-800">{feature.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ink-500">
+                        {feature.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {service.kind === "epr" && (
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {eprServices.features.map((feature) => (
+                    <div key={feature.title} className="rounded-2xl border border-ink-100 p-6">
+                      <CheckCircle2 className="size-5 text-brand-500" />
+                      <h3 className="mt-3 font-semibold text-ink-800">{feature.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-ink-500">
+                        {feature.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {photo && (
+              <div className="lg:sticky lg:top-28 lg:self-start">
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                  <Image
+                    src={`/images/gallery/gal${photo.id}.jpg`}
+                    alt={photo.caption}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 35vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <p className="mt-3 text-xs text-ink-400">{photo.caption}</p>
+              </div>
+            )}
           </div>
-
-          {service.kind === "stream" && (
-            <>
-              <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700">
-                National Capacity: {service.stream.capacity} {service.stream.unit}
-              </div>
-              <p className="mt-6 max-w-2xl text-sm font-semibold text-ink-800">
-                Recovered outputs
-              </p>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-500">
-                {service.stream.outputs}
-              </p>
-              <div className="mt-8 rounded-2xl border border-ink-100 p-7">
-                <p className="text-xs font-semibold uppercase tracking-wide text-ink-400">
-                  Process Flow
-                </p>
-                <div className="mt-5">
-                  <ProcessFlow steps={service.stream.process} />
-                </div>
-              </div>
-            </>
-          )}
-
-          {service.kind === "data" && (
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {dataServices.features.map((feature) => (
-                <div key={feature.title} className="rounded-2xl border border-ink-100 p-6">
-                  <CheckCircle2 className="size-5 text-brand-500" />
-                  <h3 className="mt-3 font-semibold text-ink-800">{feature.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-500">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {service.kind === "epr" && (
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {eprServices.features.map((feature) => (
-                <div key={feature.title} className="rounded-2xl border border-ink-100 p-6">
-                  <CheckCircle2 className="size-5 text-brand-500" />
-                  <h3 className="mt-3 font-semibold text-ink-800">{feature.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-500">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       </section>
 
