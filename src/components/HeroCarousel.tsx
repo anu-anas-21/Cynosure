@@ -1,17 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { heroSlides } from "@/lib/content";
-
-/* Per-slide abstract visual panels (no photography available yet — layered
-   brand-toned gradients keep the same overlapping-card composition). */
-const slideVisuals = [
-  "bg-[linear-gradient(135deg,#161616_0%,#2e2e2e_45%,#93412a_100%)]",
-  "bg-[linear-gradient(135deg,#1f2a24_0%,#24433a_50%,#ef5f1a_130%)]",
-  "bg-[linear-gradient(135deg,#101820_0%,#1f2e3d_55%,#f47b2f_140%)]",
-  "bg-[linear-gradient(135deg,#241a10_0%,#4a2c14_55%,#ef5f1a_120%)]",
-];
 
 export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
@@ -41,16 +33,14 @@ export default function HeroCarousel() {
         <div className="relative overflow-hidden">
           {/* Visual panel, bounded to the same right edge as the page padding */}
           <div className="absolute inset-y-0 right-0 left-0 lg:left-[26%]">
-            <div className={`size-full ${slideVisuals[index % slideVisuals.length]} transition-all duration-700`}>
-              {/* dot-grid texture overlay */}
-              <div
-                className="size-full opacity-25"
-                style={{
-                  backgroundImage: "radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px)",
-                  backgroundSize: "22px 22px",
-                }}
-              />
-            </div>
+            <Image
+              src="/images/hero-panel.png"
+              alt="Cynosure Recycling facility with e-waste being processed"
+              fill
+              priority
+              sizes="(min-width: 1024px) 74vw, 100vw"
+              className="object-cover"
+            />
           </div>
 
           <div className="relative py-8 lg:py-10">

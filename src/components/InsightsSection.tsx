@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { insights } from "@/lib/content";
 
-const cardVisuals = [
-  "bg-[linear-gradient(135deg,#24433a_0%,#1f2a24_60%,#ef5f1a_160%)]",
-  "bg-[linear-gradient(135deg,#1f2e3d_0%,#101820_60%,#f47b2f_170%)]",
-  "bg-[linear-gradient(135deg,#4a2c14_0%,#241a10_60%,#ef5f1a_150%)]",
+const cardImages = [
+  { src: "/images/insight-awareness.png", alt: "Community e-waste awareness drive and collection program" },
+  { src: "/images/insight-epr.png", alt: "EPR registration documents and compliance dashboard" },
+  { src: "/images/insight-closed-loop.png", alt: "Closed-loop recycling process from collection to secondary raw materials" },
 ];
 
 export default function InsightsSection() {
@@ -22,14 +23,13 @@ export default function InsightsSection() {
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
           {insights.map((item, i) => (
             <div key={item.title} className="flex flex-col bg-white shadow-sm">
-              <div className={`h-48 ${cardVisuals[i % cardVisuals.length]}`}>
-                <div
-                  className="size-full opacity-20"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px)",
-                    backgroundSize: "18px 18px",
-                  }}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={cardImages[i % cardImages.length].src}
+                  alt={cardImages[i % cardImages.length].alt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover"
                 />
               </div>
               <div className="flex flex-1 flex-col p-7">
