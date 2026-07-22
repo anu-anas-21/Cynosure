@@ -32,14 +32,15 @@ export default function HeroCarousel() {
       <div className="container-page">
         <div className="relative overflow-hidden">
           {/* Visual panel, bounded to the same right edge as the page padding */}
-          <div className="absolute inset-y-0 right-0 left-0 lg:left-[26%]">
+          <div className="absolute inset-y-0 right-0 left-0 overflow-hidden lg:left-[26%]">
             <Image
-              src="/images/hero-panel.png"
-              alt="Cynosure Recycling facility with e-waste being processed"
+              key={index}
+              src={slide.image}
+              alt={slide.title}
               fill
-              priority
+              priority={index === 0}
               sizes="(min-width: 1024px) 74vw, 100vw"
-              className="object-cover"
+              className="animate-[fadein_0.6s_ease] object-cover"
             />
           </div>
 

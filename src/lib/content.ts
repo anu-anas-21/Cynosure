@@ -18,6 +18,7 @@ export const heroSlides = [
       "End-to-end e-waste, plastic, battery, tyre, and end-of-life vehicle recycling with certified data destruction, EPR compliance, and full chain-of-custody traceability.",
     ctaLabel: "Explore Our Services",
     ctaHref: "/services",
+    image: "/images/hero-panel-1.png",
   },
   {
     eyebrow: "Closed-Loop Recycling",
@@ -26,6 +27,7 @@ export const heroSlides = [
       "From e-waste and plastics to batteries, tyres, and end-of-life vehicles, Cynosure recovers valuable materials and returns them to the supply chain.",
     ctaLabel: "See All Waste Streams",
     ctaHref: "/services",
+    image: "/images/hero-panel-waste-streams.png",
   },
   {
     eyebrow: "Secure Data Destruction",
@@ -34,6 +36,7 @@ export const heroSlides = [
       "On-site and off-site data destruction aligned with NIST 800-88 and DoD 5220.22-M, backed by secure chain-of-custody and certificates of destruction.",
     ctaLabel: "Find Out More About Data Security",
     ctaHref: "/services/data-destruction",
+    image: "/images/hero-panel-3.png",
   },
   {
     eyebrow: "Sustainability With Measurable Impact",
@@ -42,6 +45,7 @@ export const heroSlides = [
       "Over 3.5 lakh metric tonnes of waste responsibly managed annually, with verified environmental outcomes and transparent reporting for every partner.",
     ctaLabel: "More About Sustainability at Cynosure",
     ctaHref: "/sustainability",
+    image: "/images/hero-panel-4.png",
   },
 ];
 
