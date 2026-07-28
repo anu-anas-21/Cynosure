@@ -87,7 +87,8 @@ export default function SustainabilityPage() {
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <h3 className="font-semibold text-ink-800">{stream.name}</h3>
                   <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
-                    {stream.capacity} {stream.unit}
+                    {stream.capacity}
+                    {stream.unit ? ` ${stream.unit}` : ""}
                   </span>
                 </div>
                 <div className="mt-5">
@@ -110,7 +111,7 @@ export default function SustainabilityPage() {
               Measurable impact, every single day
             </h2>
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {annualImpact.map((item) => (
               <div key={item.label} className="rounded-2xl border border-ink-100 p-6">
                 <TrendingUp className="size-6 text-brand-500" />

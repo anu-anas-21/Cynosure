@@ -22,9 +22,9 @@ export const heroSlides = [
   },
   {
     eyebrow: "Closed-Loop Recycling",
-    title: "Five waste streams, one accountable partner",
+    title: "Seven waste streams, one accountable partner",
     description:
-      "From e-waste and plastics to batteries, tyres, and end-of-life vehicles, Cynosure recovers valuable materials and returns them to the supply chain.",
+      "From e-waste and plastics to batteries, tyres, end-of-life vehicles, non-ferrous metals, and biomedical waste, Cynosure recovers valuable materials and returns them to the supply chain.",
     ctaLabel: "See All Waste Streams",
     ctaHref: "/services",
     image: "/images/hero-panel-waste-streams.png",
@@ -42,7 +42,7 @@ export const heroSlides = [
     eyebrow: "Sustainability With Measurable Impact",
     title: "Building India's circular economy",
     description:
-      "Over 3.5 lakh metric tonnes of waste responsibly managed annually, with verified environmental outcomes and transparent reporting for every partner.",
+      "Over 5.4 lakh metric tonnes of waste responsibly managed annually, with verified environmental outcomes and transparent reporting for every partner.",
     ctaLabel: "More About Sustainability at Cynosure",
     ctaHref: "/sustainability",
     image: "/images/hero-panel-4.png",
@@ -50,11 +50,11 @@ export const heroSlides = [
 ];
 
 export const statsBand = [
-  { target: 5, decimals: 0, suffix: "", label: "Waste Streams Managed End-to-End" },
+  { target: 7, decimals: 0, suffix: "", label: "Waste Streams Managed End-to-End" },
   { target: 3, decimals: 0, suffix: "", label: "Operating Facilities Across India" },
-  { target: 3.5, decimals: 1, suffix: "L+", label: "Metric Tonnes Processed Annually" },
+  { target: 5.48, decimals: 1, suffix: "L+", label: "Metric Tonnes Processed Annually" },
   { target: 1.2, decimals: 1, suffix: "M+", label: "Tonnes of CO₂e Emissions Avoided" },
-  { target: 7.5, decimals: 1, suffix: "K+", label: "End-of-Life Vehicles Dismantled Annually" },
+  { target: 20, decimals: 0, suffix: "K+", label: "End-of-Life Vehicles Dismantled Annually" },
   { target: 100, decimals: 0, suffix: "%", label: "Traceability Across EPR Take-Back Programs" },
 ];
 
@@ -90,8 +90,8 @@ export const wasteStreams = [
     slug: "e-waste",
     name: "E-Waste Recycling",
     shortName: "E-Waste",
-    capacity: "1,00,000",
-    capacityValue: 100000,
+    capacity: "2,01,208",
+    capacityValue: 201208,
     unit: "Metric Tonnes / Annum",
     description:
       "Secure, environmentally sound disposal of e-waste, including discarded IT assets, consumer electronics, and industrial equipment, with complete data destruction and efficient resource recovery.",
@@ -109,8 +109,8 @@ export const wasteStreams = [
     slug: "plastic-waste",
     name: "Plastic Waste Recycling",
     shortName: "Plastic Waste",
-    capacity: "1,00,000",
-    capacityValue: 100000,
+    capacity: "1,20,000",
+    capacityValue: 120000,
     unit: "Metric Tonnes / Annum",
     description:
       "Effective segregation, processing, and conversion of post-consumer and industrial plastic waste streams to minimize plastic pollution and support a circular plastic economy.",
@@ -145,8 +145,8 @@ export const wasteStreams = [
     slug: "tyre-waste",
     name: "Tyre Waste Recycling",
     shortName: "Tyre Waste",
-    capacity: "1,50,000",
-    capacityValue: 150000,
+    capacity: "1,85,000",
+    capacityValue: 185000,
     unit: "Metric Tonnes / Annum",
     description:
       "Sustainable pyrolysis and mechanical processing of discarded tyres into valuable products like rubber granules, oil, and steel.",
@@ -163,8 +163,8 @@ export const wasteStreams = [
     slug: "elv-recycling",
     name: "End-of-Life Vehicle Recycling",
     shortName: "ELV Recycling",
-    capacity: "7,500",
-    capacityValue: 7500,
+    capacity: "20,000",
+    capacityValue: 20000,
     unit: "Vehicles / Annum",
     description:
       "Dismantling, depollution, and recycling of vehicles that have reached the end of their usable life, recovering reusable parts and safely treating hazardous waste.",
@@ -177,6 +177,43 @@ export const wasteStreams = [
       "Recycled Raw Materials",
     ],
     outputs: "Ferrous and non-ferrous metals reintroduced into steel and aluminum industries.",
+  },
+  {
+    slug: "non-ferrous",
+    name: "Non-Ferrous Recycling",
+    shortName: "Non-Ferrous",
+    capacity: "30,000",
+    capacityValue: 30000,
+    unit: "Metric Tonnes / Annum",
+    description:
+      "Recovery of non-ferrous metals such as aluminium, copper, and brass from industrial and post-consumer scrap, restoring high-value metal to the manufacturing supply chain.",
+    process: [
+      "Collection",
+      "Sorting & Grading",
+      "Shredding",
+      "Melting & Refining",
+      "Ingot Casting",
+      "Secondary Metal Supply",
+    ],
+    outputs: "Refined aluminium, copper, and brass ingots supplied back to metal manufacturers.",
+  },
+  {
+    slug: "biomedical",
+    name: "Biomedical Recycling",
+    shortName: "Biomedical",
+    capacity: "Available on request",
+    capacityValue: 0,
+    unit: "",
+    description:
+      "Safe collection, segregation, and disposal of biomedical and healthcare waste in line with Bio-Medical Waste Management Rules, protecting public health and the environment.",
+    process: [
+      "Collection",
+      "Segregation",
+      "Autoclaving / Sterilization",
+      "Treatment & Disposal",
+      "Compliance Reporting",
+    ],
+    outputs: "Biomedical waste safely treated and disposed of in full regulatory compliance.",
   },
 ];
 
@@ -239,11 +276,21 @@ export const eprServices = {
 };
 
 export const stats = [
-  { value: "3.5L+", label: "Metric Tonnes Processed Annually", suffix: "" },
+  { value: "5.5L+", label: "Metric Tonnes Processed Annually", suffix: "" },
   { value: "1.2M+", label: "Tonnes of CO₂e Emissions Avoided", suffix: "" },
-  { value: "5", label: "Waste Streams Managed End-to-End", suffix: "" },
+  { value: "7", label: "Waste Streams Managed End-to-End", suffix: "" },
   { value: "3", label: "Operating Facilities Across India", suffix: "" },
 ];
+
+export type FacilityService = {
+  /** Matches a wasteStreams slug, or "data-destruction" / "epr". */
+  slug: string;
+  name: string;
+  /** MT/vehicles per year. Null when no capacity figure is available (shown as "Available"). */
+  capacity: number | null;
+  unit: string;
+  note?: string;
+};
 
 export const facilities = [
   {
@@ -253,7 +300,20 @@ export const facilities = [
     region: "North India Hub",
     status: "operational" as const,
     note: "Founding facility and central hub serving North India.",
-    capacityShare: 0.4,
+    services: [
+      { slug: "e-waste", name: "E-Waste Recycling", capacity: 9000, unit: "MT/Annum" },
+      {
+        slug: "plastic-waste",
+        name: "Plastic Recycling",
+        capacity: 50000,
+        unit: "MT/Annum",
+        note: "Operated under the Eco Pyro Recycling Pvt Ltd brand",
+      },
+      { slug: "tyre-waste", name: "Tyre Recycling", capacity: 150000, unit: "MT/Annum" },
+      { slug: "battery-waste", name: "Battery Waste Management", capacity: null, unit: "" },
+      { slug: "data-destruction", name: "Data Destruction & ITAD", capacity: null, unit: "" },
+      { slug: "epr", name: "EPR Compliance", capacity: null, unit: "" },
+    ] as FacilityService[],
   },
   {
     slug: "telangana",
@@ -262,7 +322,20 @@ export const facilities = [
     region: "South India",
     status: "operational" as const,
     note: "Serving South India's e-waste and material recovery needs.",
-    capacityShare: 0.3,
+    services: [
+      { slug: "e-waste", name: "E-Waste Recycling", capacity: 21500, unit: "MT/Annum" },
+      {
+        slug: "e-waste",
+        name: "E-Waste Recycling",
+        capacity: 61000,
+        unit: "MT/Annum",
+        note: "Via partner facility",
+      },
+      { slug: "plastic-waste", name: "Plastic Recycling", capacity: 50000, unit: "MT/Annum" },
+      { slug: "battery-waste", name: "Battery Waste Management", capacity: null, unit: "" },
+      { slug: "data-destruction", name: "Data Destruction & ITAD", capacity: null, unit: "" },
+      { slug: "epr", name: "EPR Compliance", capacity: null, unit: "" },
+    ] as FacilityService[],
   },
   {
     slug: "tamil-nadu",
@@ -271,7 +344,17 @@ export const facilities = [
     region: "South India",
     status: "operational" as const,
     note: "Complements Hyderabad in serving South India.",
-    capacityShare: 0.3,
+    services: [
+      { slug: "e-waste", name: "E-Waste Recycling", capacity: 63708, unit: "MT/Annum" },
+      { slug: "plastic-waste", name: "Plastic Recycling", capacity: 20000, unit: "MT/Annum" },
+      { slug: "non-ferrous", name: "Non-Ferrous Recycling", capacity: 30000, unit: "MT/Annum" },
+      { slug: "tyre-waste", name: "Tyre Recycling", capacity: 35000, unit: "MT/Annum" },
+      { slug: "elv-recycling", name: "Vehicle Recycling", capacity: 20000, unit: "Vehicles/Annum" },
+      { slug: "biomedical", name: "Biomedical Recycling", capacity: null, unit: "" },
+      { slug: "battery-waste", name: "Battery Waste Management", capacity: null, unit: "" },
+      { slug: "data-destruction", name: "Data Destruction & ITAD", capacity: null, unit: "" },
+      { slug: "epr", name: "EPR Compliance", capacity: null, unit: "" },
+    ] as FacilityService[],
   },
   {
     slug: "maharashtra",
@@ -280,7 +363,17 @@ export const facilities = [
     region: "Western India",
     status: "upcoming" as const,
     note: "New plant opening soon to serve Western India.",
-    capacityShare: 0,
+    services: [
+      {
+        slug: "e-waste",
+        name: "E-Waste Recycling",
+        capacity: 26000,
+        unit: "MT/Annum",
+        note: "Via partner facility",
+      },
+      { slug: "data-destruction", name: "Data Destruction & ITAD", capacity: null, unit: "" },
+      { slug: "epr", name: "EPR Compliance", capacity: null, unit: "" },
+    ] as FacilityService[],
   },
   {
     slug: "karnataka",
@@ -289,7 +382,11 @@ export const facilities = [
     region: "Southern India",
     status: "upcoming" as const,
     note: "New plant opening soon to strengthen Southern India coverage.",
-    capacityShare: 0,
+    services: [
+      { slug: "e-waste", name: "E-Waste Recycling", capacity: 20000, unit: "MT/Annum" },
+      { slug: "data-destruction", name: "Data Destruction & ITAD", capacity: null, unit: "" },
+      { slug: "epr", name: "EPR Compliance", capacity: null, unit: "" },
+    ] as FacilityService[],
   },
 ];
 
@@ -399,6 +496,20 @@ export const certifications = {
         "Certified and authorized dismantling facility with trained personnel and depollution systems",
       ],
     },
+    {
+      name: "Non-Ferrous Recycling",
+      points: [
+        "Registered under applicable State Pollution Control Board scrap metal recycling guidelines",
+        "Compliant with hazardous and solid waste handling norms for metal processing",
+      ],
+    },
+    {
+      name: "Biomedical Recycling",
+      points: [
+        "Authorized under the Bio-Medical Waste Management Rules, 2016 (as amended)",
+        "CPCB / SPCB authorization for collection, treatment, and disposal of bio-medical waste",
+      ],
+    },
   ],
 };
 
@@ -447,7 +558,7 @@ export const sustainabilityImpact = [
     label: "Tonnes of CO₂e emissions avoided",
   },
   {
-    value: "3.5L+",
+    value: "5.5L+",
     label: "Metric tonnes of waste responsibly managed annually",
   },
   {
@@ -462,12 +573,12 @@ export const sustainabilityImpact = [
 
 export const annualImpact = [
   {
-    metric: "1,00,000 MT",
+    metric: "2,01,208 MT",
     label: "E-waste recycled",
     detail: "Recovering gold, copper, palladium, and silver, reducing dependency on virgin mining.",
   },
   {
-    metric: "1,00,000 MT",
+    metric: "1,20,000 MT",
     label: "Plastic waste reprocessed",
     detail: "Converted into high-grade recycled plastic granules, reducing fossil-fuel-based virgin plastic demand.",
   },
@@ -477,12 +588,17 @@ export const annualImpact = [
     detail: "Recovering lithium, cobalt, and lead while diverting toxic leachate from landfills.",
   },
   {
-    metric: "1,50,000 MT",
+    metric: "1,85,000 MT",
     label: "Tyre waste processed",
     detail: "Converted into pyrolysis oil, carbon black, and recovered steel via pyrolysis.",
   },
   {
-    metric: "7,500",
+    metric: "30,000 MT",
+    label: "Non-ferrous metal recovered",
+    detail: "Aluminium, copper, and brass refined and returned to metal manufacturers.",
+  },
+  {
+    metric: "20,000",
     label: "End-of-life vehicles dismantled",
     detail: "Metals and reusable components reintroduced into the manufacturing supply chain.",
   },
@@ -616,6 +732,8 @@ export const navigation: NavItem[] = [
       { label: "Battery Waste Management", href: "/services/battery-waste" },
       { label: "Tyre Waste Recycling", href: "/services/tyre-waste" },
       { label: "End-of-Life Vehicle Recycling", href: "/services/elv-recycling" },
+      { label: "Non-Ferrous Recycling", href: "/services/non-ferrous" },
+      { label: "Biomedical Recycling", href: "/services/biomedical" },
       { label: "Data Destruction & ITAD", href: "/services/data-destruction" },
       { label: "EPR Compliance", href: "/services/epr" },
     ],

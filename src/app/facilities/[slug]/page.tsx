@@ -10,24 +10,24 @@ import {
   Car,
   ShieldCheck,
   FileCheck2,
+  Layers,
+  Syringe,
   MapPin,
   ArrowRight,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import {
-  facilities,
-  wasteStreams,
-  dataServices,
-  eprServices,
-  formatIndianNumber,
-} from "@/lib/content";
+import { facilities, formatIndianNumber } from "@/lib/content";
 
-const streamIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+const serviceIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "e-waste": Cpu,
   "plastic-waste": Recycle,
   "battery-waste": BatteryCharging,
   "tyre-waste": CircleDot,
   "elv-recycling": Car,
+  "non-ferrous": Layers,
+  biomedical: Syringe,
+  "data-destruction": ShieldCheck,
+  epr: FileCheck2,
 };
 
 /* Real photos are only available for the Meerut (Uttar Pradesh) facility. */
@@ -86,36 +86,34 @@ export default async function FacilityPage({
             >
               {isOperational ? "Operational" : "Opening Soon"}
             </span>
-            {isOperational && (
-              <span className="text-sm text-ink-500">
-                Handles {formatIndianNumber(facility.capacityShare * 100)}% of national
-                processing capacity across our waste streams
-              </span>
-            )}
           </div>
 
           <h2 className="mt-12 text-2xl font-light text-ink-600 sm:text-3xl">
             Services available at this facility
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {wasteStreams.map((stream) => {
-              const Icon = streamIcons[stream.slug] ?? Recycle;
-              const facilityCapacity = stream.capacityValue * facility.capacityShare;
+            {facility.services.map((service, index) => {
+              const Icon = serviceIcons[service.slug] ?? Recycle;
               return (
                 <Link
-                  key={stream.slug}
-                  href={`/services/${stream.slug}`}
+                  key={`${service.slug}-${index}`}
+                  href={`/services/${service.slug}`}
                   className="group flex flex-col rounded-2xl border border-ink-100 p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
                 >
                   <div className="flex size-11 items-center justify-center rounded-xl bg-brand-500 text-white">
                     <Icon className="size-5" />
                   </div>
-                  <h3 className="mt-4 font-medium text-ink-700">{stream.name}</h3>
+                  <h3 className="mt-4 font-medium text-ink-700">{service.name}</h3>
                   <p className="mt-2 text-sm text-ink-500">
                     {isOperational
-                      ? `${formatIndianNumber(facilityCapacity)} ${stream.unit}`
+                      ? service.capacity !== null
+                        ? `${formatIndianNumber(service.capacity)} ${service.unit}`
+                        : "Available"
                       : "Launching soon"}
                   </p>
+                  {service.note && (
+                    <p className="mt-1 text-xs text-ink-400">{service.note}</p>
+                  )}
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
                     View service
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -123,40 +121,6 @@ export default async function FacilityPage({
                 </Link>
               );
             })}
-
-            <Link
-              href={`/services/${dataServices.slug}`}
-              className="group flex flex-col rounded-2xl border border-ink-100 p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="flex size-11 items-center justify-center rounded-xl bg-ink-900 text-white">
-                <ShieldCheck className="size-5" />
-              </div>
-              <h3 className="mt-4 font-medium text-ink-700">{dataServices.name}</h3>
-              <p className="mt-2 text-sm text-ink-500">
-                {isOperational ? "Available" : "Launching soon"}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
-                View service
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-
-            <Link
-              href={`/services/${eprServices.slug}`}
-              className="group flex flex-col rounded-2xl border border-ink-100 p-6 transition-all hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="flex size-11 items-center justify-center rounded-xl bg-ink-900 text-white">
-                <FileCheck2 className="size-5" />
-              </div>
-              <h3 className="mt-4 font-medium text-ink-700">{eprServices.name}</h3>
-              <p className="mt-2 text-sm text-ink-500">
-                {isOperational ? "Available" : "Launching soon"}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
-                View service
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
           </div>
         </div>
       </section>

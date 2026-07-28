@@ -55,7 +55,7 @@ export default function AnimatedStats() {
                 The largest closed-loop network in North &amp; South India
               </h2>
               <p className="mt-6 text-base leading-relaxed text-ink-500">
-                With five high-volume waste streams, owned processing
+                With seven high-volume waste streams, owned processing
                 facilities, and the group of clients we&apos;re privileged to
                 serve, Cynosure is uniquely positioned to make a positive
                 impact on the circular economy.

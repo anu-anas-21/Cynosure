@@ -8,6 +8,8 @@ import {
   Car,
   ShieldCheck,
   FileCheck2,
+  Layers,
+  Syringe,
 } from "lucide-react";
 import {
   wasteStreams,
@@ -30,6 +32,8 @@ const streamIcons: Record<string, React.ComponentType<{ className?: string }>> =
   "battery-waste": BatteryCharging,
   "tyre-waste": CircleDot,
   "elv-recycling": Car,
+  "non-ferrous": Layers,
+  biomedical: Syringe,
 };
 
 const serviceCards = [
@@ -112,7 +116,7 @@ export default function Home() {
                 operations aligned with ISO 9001, 14001 &amp; 45001
               </>,
               <>
-                <span className="font-medium">Proven delivery</span> across five
+                <span className="font-medium">Proven delivery</span> across seven
                 high-volume waste streams at enterprise scale
               </>,
               <>
@@ -202,7 +206,7 @@ export default function Home() {
               <p className="mt-6 text-base leading-relaxed text-white/90">
                 Sustainability is the compass guiding our every decision. We
                 are dedicated to creating meaningful, long-term impact by
-                responsibly managing over 3.5 lakh metric tonnes of waste
+                responsibly managing over 5.4 lakh metric tonnes of waste
                 annually and returning recovered materials to the economy.
               </p>
               <p className="mt-4 text-base leading-relaxed text-white/90">

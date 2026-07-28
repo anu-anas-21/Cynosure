@@ -8,6 +8,8 @@ import {
   Car,
   ShieldCheck,
   FileCheck2,
+  Layers,
+  Syringe,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
@@ -18,7 +20,7 @@ import { wasteStreams, dataServices, eprServices, technologies } from "@/lib/con
 export const metadata: Metadata = {
   title: "Services | Cynosure Recycling",
   description:
-    "E-waste, plastic, battery, tyre, and end-of-life vehicle recycling, secure data destruction, IT asset disposition, and EPR compliance services from Cynosure Recycling.",
+    "E-waste, plastic, battery, tyre, end-of-life vehicle, non-ferrous, and biomedical recycling, secure data destruction, IT asset disposition, and EPR compliance services from Cynosure Recycling.",
 };
 
 const streamIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -27,6 +29,8 @@ const streamIcons: Record<string, React.ComponentType<{ className?: string }>> =
   "battery-waste": BatteryCharging,
   "tyre-waste": CircleDot,
   "elv-recycling": Car,
+  "non-ferrous": Layers,
+  biomedical: Syringe,
 };
 
 export default function ServicesPage() {
@@ -73,7 +77,8 @@ export default function ServicesPage() {
                 <h2 className="mt-6 text-3xl font-light sm:text-4xl">{stream.name}</h2>
                 <p className="mt-4 text-base leading-relaxed text-ink-500">{stream.description}</p>
                 <div className="mt-6 inline-flex items-center gap-2 border border-brand-400 px-4 py-2 text-sm font-medium text-brand-700">
-                  Capacity: {stream.capacity} {stream.unit}
+                  Capacity: {stream.capacity}
+                  {stream.unit ? ` ${stream.unit}` : ""}
                 </div>
                 <p className="mt-6 text-sm font-medium text-ink-600">Recovered outputs</p>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">{stream.outputs}</p>

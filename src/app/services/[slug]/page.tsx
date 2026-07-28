@@ -10,6 +10,8 @@ import {
   Car,
   ShieldCheck,
   FileCheck2,
+  Layers,
+  Syringe,
   MapPin,
   CheckCircle2,
   ArrowRight,
@@ -30,6 +32,8 @@ const streamIcons: Record<string, React.ComponentType<{ className?: string }>> =
   "battery-waste": BatteryCharging,
   "tyre-waste": CircleDot,
   "elv-recycling": Car,
+  "non-ferrous": Layers,
+  biomedical: Syringe,
   "data-destruction": ShieldCheck,
   epr: FileCheck2,
 };
@@ -42,6 +46,8 @@ const servicePhotos: Record<string, { id: number; caption: string }> = {
   "battery-waste": { id: 12, caption: "Hazardous waste handling area at our Meerut facility" },
   "tyre-waste": { id: 18, caption: "Furnace used in our material recovery process" },
   "elv-recycling": { id: 4, caption: "Heavy material dismantling area at our Meerut facility" },
+  "non-ferrous": { id: 17, caption: "Metal recovery equipment at our Meerut facility" },
+  biomedical: { id: 9, caption: "Segregated storage area at our Meerut facility" },
   "data-destruction": { id: 1, caption: "Dismantling line at our Meerut facility" },
   epr: { id: 19, caption: "Compliance and operations management at our Meerut facility" },
 };
@@ -108,6 +114,13 @@ export default async function ServiceDetailPage({
         ? dataServices.description
         : eprServices.description;
 
+  const facilitiesOffering = facilities
+    .map((facility) => ({
+      facility,
+      matches: facility.services.filter((s) => s.slug === slug),
+    }))
+    .filter((entry) => entry.matches.length > 0);
+
   return (
     <>
       <PageHero eyebrow="Service" title={name} description={description} />
@@ -123,7 +136,8 @@ export default async function ServiceDetailPage({
               {service.kind === "stream" && (
                 <>
                   <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-sm font-semibold text-brand-700">
-                    National Capacity: {service.stream.capacity} {service.stream.unit}
+                    National Capacity: {service.stream.capacity}
+                    {service.stream.unit ? ` ${service.stream.unit}` : ""}
                   </div>
                   <p className="mt-6 max-w-2xl text-sm font-semibold text-ink-800">
                     Recovered outputs
@@ -196,12 +210,8 @@ export default async function ServiceDetailPage({
             Available at these facilities
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {facilities.map((facility) => {
+            {facilitiesOffering.map(({ facility, matches }) => {
               const isOperational = facility.status === "operational";
-              const capacityHere =
-                service.kind === "stream"
-                  ? service.stream.capacityValue * facility.capacityShare
-                  : null;
               return (
                 <Link
                   key={facility.slug}
@@ -224,13 +234,20 @@ export default async function ServiceDetailPage({
                     </span>
                   </div>
                   <p className="mt-3 text-xs text-ink-400">{facility.hubCity}</p>
-                  <p className="mt-3 text-sm text-ink-500">
-                    {isOperational
-                      ? capacityHere !== null
-                        ? `${formatIndianNumber(capacityHere)} ${service.kind === "stream" ? service.stream.unit : ""}`
-                        : "Available"
-                      : "Launching soon"}
-                  </p>
+                  <div className="mt-3 space-y-1.5">
+                    {matches.map((match, i) => (
+                      <p key={i} className="text-sm text-ink-500">
+                        {isOperational
+                          ? match.capacity !== null
+                            ? `${formatIndianNumber(match.capacity)} ${match.unit}`
+                            : "Available"
+                          : "Launching soon"}
+                        {match.note && (
+                          <span className="text-ink-400"> — {match.note}</span>
+                        )}
+                      </p>
+                    ))}
+                  </div>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
                     View facility
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
