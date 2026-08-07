@@ -530,7 +530,7 @@ export const clientJourney = [
     step: "03",
     title: "Collection & Reverse Logistics",
     description:
-      "Timely, GPS-tracked collection from client sites via our hubs in Meerut, Hyderabad, and Chennai, with Pune and Bengaluru coming soon.",
+      "Timely, GPS-tracked collection from client sites via our hubs in Meerut, Hyderabad, and Chennai, with Pune and Bangalore coming soon.",
   },
   {
     step: "04",
@@ -672,7 +672,7 @@ export const galleryCategories = ["All", "Machines", "Outdoor", "Office", "Stora
 
 export const galleryItems: { id: number; title: string; category: (typeof galleryCategories)[number] }[] = [
   { id: 1, title: "Dismantling Line", category: "Machines" },
-  { id: 2, title: "Automated Chopressor Cutting Machines", category: "Machines" },
+  { id: 2, title: "Automated Compressor Cutting Machines", category: "Machines" },
   { id: 3, title: "ID Fans & Ducting Lines", category: "Machines" },
   { id: 4, title: "Heavy Material Dismantling Area", category: "Machines" },
   { id: 5, title: "Reception", category: "Office" },
