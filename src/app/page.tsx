@@ -287,7 +287,7 @@ export default function Home() {
                 </h2>
                 <p className="mt-2 max-w-xl text-base text-ink-500">
                   End-to-end support for producers, importers, and brand
-                  owners — from CPCB registration to target fulfillment and
+                  owners — from CPCB registration to target fulfilment and
                   verified reporting.
                 </p>
               </div>

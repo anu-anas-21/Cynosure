@@ -176,7 +176,7 @@ export const wasteStreams = [
       "Metal Shredding & Recovery",
       "Recycled Raw Materials",
     ],
-    outputs: "Ferrous and non-ferrous metals reintroduced into steel and aluminum industries.",
+    outputs: "Ferrous and non-ferrous metals reintroduced into steel and aluminium industries.",
   },
   {
     slug: "non-ferrous",
@@ -250,7 +250,7 @@ export const eprServices = {
   slug: "epr",
   name: "Extended Producer Responsibility (EPR) Compliance",
   description:
-    "Comprehensive, customized EPR solutions that help producers, importers, and brand owners fulfill their statutory obligations under India's E-Waste and Plastic Waste Management Rules.",
+    "Comprehensive, customized EPR solutions that help producers, importers, and brand owners fulfil their statutory obligations under India's E-Waste and Plastic Waste Management Rules.",
   features: [
     {
       title: "EPR Registration & Documentation",
@@ -258,9 +258,9 @@ export const eprServices = {
         "End-to-end assistance through the CPCB registration process, with all paperwork and compliance protocols handled.",
     },
     {
-      title: "Target Fulfillment & Waste Channelization",
+      title: "Target Fulfilment & Waste Channelization",
       description:
-        "A nationwide network of collection centers and authorized recyclers to help brands meet annual EPR targets.",
+        "A nationwide network of collection centres and authorized recyclers to help brands meet annual EPR targets.",
     },
     {
       title: "Real-Time Tracking & Reporting",
@@ -651,7 +651,7 @@ export const faqs = [
   {
     question: "What is your approach to EPR compliance?",
     answer:
-      "We offer end-to-end EPR support for producers, importers, and brand owners: registration and documentation with CPCB, target fulfillment and waste channelization through our nationwide network, real-time tracking and reporting, and awareness and take-back program design.",
+      "We offer end-to-end EPR support for producers, importers, and brand owners: registration and documentation with CPCB, target fulfilment and waste channelization through our nationwide network, real-time tracking and reporting, and awareness and take-back program design.",
   },
   {
     question: "How do you ensure transparency and traceability?",
