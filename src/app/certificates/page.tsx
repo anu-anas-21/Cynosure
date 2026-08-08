@@ -58,7 +58,7 @@ export default function CertificatesPage() {
         <div className="container-page flex flex-col items-start justify-between gap-8 py-16 sm:flex-row sm:items-center">
           <div>
             <h2 className="text-4xl font-light text-white sm:text-5xl">
-              Ready to get free consultation for any kind of waste management?
+              Ready to get a free consultation for any kind of waste management?
             </h2>
           </div>
           <Link href="/contact" className="btn-outline-light shrink-0">
