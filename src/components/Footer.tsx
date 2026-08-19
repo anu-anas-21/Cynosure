@@ -47,11 +47,11 @@ export default function Footer() {
       <div className="container-page grid grid-cols-1 gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
         <div>
           <Image
-            src="/images/logo-horizontal.jpg"
+            src="/images/logo-horizontal-dark.png"
             alt={company.name}
             width={220}
             height={44}
-            className="h-10 w-auto rounded bg-white p-1"
+            className="h-10 w-auto"
           />
           <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-ink-300">
             Your end-to-end partner for e-waste, plastic, battery, tyre, and
