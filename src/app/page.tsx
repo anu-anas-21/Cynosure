@@ -66,7 +66,7 @@ export default function Home() {
                 Why organizations choose Cynosure
               </h2>
               <p className="mt-8 text-lg leading-relaxed text-ink-500">
-                Cynosure Recycling delivers waste management designed for{" "}
+                Cynosure Recycling Private Limited delivers waste management designed for{" "}
                 <span className="font-medium text-ink-600">
                   scale, security, and regulatory complexity
                 </span>
