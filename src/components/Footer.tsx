@@ -60,7 +60,7 @@ export default function Footer() {
           </p>
           <div className="mt-6 flex items-center gap-3">
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/company/cynosure-recycling-pvt-limited/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Cynosure Recycling on LinkedIn"
@@ -69,7 +69,7 @@ export default function Footer() {
               <LinkedinIcon className="size-4" />
             </a>
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/cynosurerecycling?igsh=bGYxYnZmcWkzYzdk"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Cynosure Recycling on Instagram"
@@ -78,7 +78,7 @@ export default function Footer() {
               <InstagramIcon className="size-4" />
             </a>
             <a
-              href="https://www.facebook.com"
+              href="https://m.facebook.com/profile.php?id=1095593200301843"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Cynosure Recycling on Facebook"
