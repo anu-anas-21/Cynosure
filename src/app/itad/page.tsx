@@ -12,13 +12,41 @@ import {
   ArrowRight,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { dataServices } from "@/lib/content";
+import ProcessFlow from "@/components/ProcessFlow";
+import { dataServices, certifications } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "IT Asset Disposition (ITAD) | Cynosure Recycling",
   description:
     "Secure, auditable IT asset disposition from Cynosure Recycling — on-site and off-site data destruction, chain of custody, and certified recycling for retired IT assets.",
 };
+
+const risks = [
+  {
+    title: "Undocumented disposal is a data risk",
+    description:
+      "Retired drives, laptops, and servers that leave without a verifiable destruction record are an open compliance and data-exposure liability.",
+  },
+  {
+    title: "Recoverable value gets written off",
+    description:
+      "Assets that still hold reusable components or refinable materials are often scrapped wholesale instead of processed for recovery.",
+  },
+  {
+    title: "Audit trails are assembled after the fact",
+    description:
+      "Without asset-level tracking from collection onward, proving compliance during an audit becomes a scramble rather than a lookup.",
+  },
+];
+
+const itadProcess = [
+  "Asset Collection",
+  "Inventory & Audit",
+  "Data Destruction / Degaussing",
+  "Component Recovery",
+  "Certified Recycling",
+  "Certificate of Destruction",
+];
 
 const builtFor = [
   { icon: Landmark, label: "BFSI & Financial Institutions" },
@@ -37,6 +65,29 @@ export default function ItadPage() {
         title="IT asset disposition, built for security and accountability"
         description="From retired laptops and servers to full data-centre decommissioning, Cynosure manages the entire IT asset lifecycle with secure destruction, verifiable chain of custody, and certified recycling."
       />
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              The Risk
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              What conventional disposition leaves exposed
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {risks.map((risk) => (
+              <div key={risk.title} className="rounded-2xl bg-white p-7 shadow-sm">
+                <h3 className="font-semibold text-ink-800">{risk.title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-ink-500">
+                  {risk.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 sm:py-20">
         <div className="container-page grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
@@ -82,6 +133,22 @@ export default function ItadPage() {
         </div>
       </section>
 
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Our Process
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              From collection to certificate
+            </h2>
+          </div>
+          <div className="mt-10 flex justify-center">
+            <ProcessFlow steps={itadProcess} />
+          </div>
+        </div>
+      </section>
+
       <section className="bg-ink-50 py-16 sm:py-20">
         <div className="container-page">
           <div className="mx-auto max-w-2xl text-center">
@@ -100,6 +167,27 @@ export default function ItadPage() {
               >
                 <sector.icon className="size-7 text-brand-500" />
                 <p className="text-sm font-medium text-ink-700">{sector.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Certifications
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              Certified management systems
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {certifications.general.map((cert) => (
+              <div key={cert.code} className="rounded-2xl border border-ink-100 p-7 text-center">
+                <h3 className="text-lg font-bold text-ink-900">{cert.code}</h3>
+                <p className="mt-1.5 text-sm text-ink-500">{cert.label}</p>
               </div>
             ))}
           </div>

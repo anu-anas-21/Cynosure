@@ -2,13 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Repeat, CheckCircle2, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { wasteStreams } from "@/lib/content";
+import ProcessFlow from "@/components/ProcessFlow";
+import { wasteStreams, annualImpact } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Re-Commerce & Material Recovery | Cynosure Recycling",
   description:
     "Cynosure recovers reusable components and secondary raw materials from every waste stream we process, returning value to the manufacturing supply chain instead of the landfill.",
 };
+
+const recoveryProcess = [
+  "Intake & Assessment",
+  "Component-Level Recovery",
+  "Material Grading & Sorting",
+  "Return to Supply Chain",
+];
 
 const recoveryPoints = [
   {
@@ -55,6 +63,37 @@ export default function ReCommercePage() {
                 <p className="mt-2.5 text-sm leading-relaxed text-ink-500">
                   {point.description}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              How It Works
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              Four steps, start to finish
+            </h2>
+          </div>
+          <div className="mt-10 flex justify-center">
+            <ProcessFlow steps={recoveryProcess} />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+            {annualImpact.map((item) => (
+              <div key={item.label} className="text-center">
+                <p className="text-2xl font-light text-brand-600 sm:text-3xl">
+                  {item.metric}
+                </p>
+                <p className="mt-1.5 text-xs leading-snug text-ink-500">{item.label}</p>
               </div>
             ))}
           </div>

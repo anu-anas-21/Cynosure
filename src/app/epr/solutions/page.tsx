@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FileCheck2, CheckCircle2, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { eprServices } from "@/lib/content";
+import { eprServices, clientJourney, faqs } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "EPR Solutions | Cynosure Recycling",
@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 };
 
 const solutions = eprServices.features.slice(0, 2);
+const buildSteps = clientJourney.slice(0, 2);
+const eprFaq = faqs.find((f) => f.question === "What is your approach to EPR compliance?");
 
 export default function EprSolutionsPage() {
   return (
@@ -54,6 +56,45 @@ export default function EprSolutionsPage() {
           </div>
         </div>
       </section>
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              How We Build It
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              From consultation to a compliant proposal
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {buildSteps.map((step) => (
+              <div key={step.step} className="bg-white p-8 shadow-sm">
+                <span className="text-4xl font-light text-brand-400">{step.step}</span>
+                <h3 className="mt-4 text-xl font-normal text-ink-600">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {eprFaq && (
+        <section className="py-16 sm:py-20">
+          <div className="container-page">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-ink-100 p-8">
+              <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+                {eprFaq.question}
+              </p>
+              <p className="mt-3 text-base leading-relaxed text-ink-500">
+                {eprFaq.answer}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-ink-900">
         <div className="container-page flex flex-col items-start justify-between gap-8 py-16 sm:flex-row sm:items-center">

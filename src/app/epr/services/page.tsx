@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FileCheck2, CheckCircle2, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { eprServices } from "@/lib/content";
+import { eprServices, clientJourney, certifications } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "EPR Services | Cynosure Recycling",
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 const services = eprServices.features.slice(2, 4);
+const supportSteps = clientJourney.slice(4, 6);
 
 export default function EprServicesPage() {
   return (
@@ -49,6 +50,51 @@ export default function EprServicesPage() {
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">
                   {feature.description}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              What Ongoing Looks Like
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              Reporting and support that don&apos;t stop at filing
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
+            {supportSteps.map((step) => (
+              <div key={step.step} className="bg-white p-8 shadow-sm">
+                <span className="text-4xl font-light text-brand-400">{step.step}</span>
+                <h3 className="mt-4 text-xl font-normal text-ink-600">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-500">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Certifications
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              Certified management systems
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {certifications.general.map((cert) => (
+              <div key={cert.code} className="rounded-2xl border border-ink-100 p-7 text-center">
+                <h3 className="text-lg font-bold text-ink-900">{cert.code}</h3>
+                <p className="mt-1.5 text-sm text-ink-500">{cert.label}</p>
               </div>
             ))}
           </div>

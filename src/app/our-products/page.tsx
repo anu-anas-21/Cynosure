@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Package, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { wasteStreams } from "@/lib/content";
+import { wasteStreams, annualImpact, certifications } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Our Products | Cynosure Recycling",
@@ -29,11 +29,26 @@ export default function OurProductsPage() {
 
       <section className="py-16 sm:py-20">
         <div className="container-page">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+            {annualImpact.map((item) => (
+              <div key={item.label} className="text-center">
+                <p className="text-2xl font-light text-brand-600 sm:text-3xl">
+                  {item.metric}
+                </p>
+                <p className="mt-1.5 text-xs leading-snug text-ink-500">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
               <div
                 key={product.slug}
-                className="flex flex-col rounded-2xl border border-ink-100 p-7"
+                className="flex flex-col rounded-2xl border border-ink-100 bg-white p-7"
               >
                 <div className="flex size-12 items-center justify-center rounded-xl bg-brand-500 text-white">
                   <Package className="size-6" />
@@ -57,7 +72,7 @@ export default function OurProductsPage() {
         </div>
       </section>
 
-      <section className="bg-ink-50 py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <div className="container-page grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="text-4xl font-light sm:text-5xl">
@@ -86,6 +101,27 @@ export default function OurProductsPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Certifications
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              Certified management systems
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {certifications.general.map((cert) => (
+              <div key={cert.code} className="rounded-2xl border border-ink-100 bg-white p-7 text-center">
+                <h3 className="text-lg font-bold text-ink-900">{cert.code}</h3>
+                <p className="mt-1.5 text-sm text-ink-500">{cert.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
