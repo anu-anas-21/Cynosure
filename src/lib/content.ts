@@ -666,7 +666,7 @@ export const contact = {
   email: "info@cynosurerecycling.com",
   phone: "1800 889 5020",
   phoneHref: "tel:18008895020",
-  headOffice: "Khasra no. 64, Village Peeplikhera, Pargana Sarawa, Meerut, Uttar Pradesh - 250002",
+  headOffice: "SIPCOT Industrial Park, Cheyyar Taluk, Plot No: A1/2B, Phase-II, Part of, Kunnavakkam, Tamil Nadu 631701",
   openingHours: "09:30 am - 06:00 pm",
 };
 
