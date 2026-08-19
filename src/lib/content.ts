@@ -726,6 +726,18 @@ type NavItem = {
 
 export const navigation: NavItem[] = [
   {
+    label: "Solutions",
+    href: "/solutions",
+    children: [
+      { label: "ITAD", href: "/itad" },
+      { label: "Re-Commerce", href: "/re-commerce" },
+      { label: "EPR Solutions", href: "/epr/solutions" },
+      { label: "EPR Services", href: "/epr/services" },
+      { label: "Recycling", href: "/services" },
+      { label: "Our Products", href: "/our-products" },
+    ],
+  },
+  {
     label: "Services",
     href: "/services",
     children: [

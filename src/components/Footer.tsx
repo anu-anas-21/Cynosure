@@ -10,6 +10,32 @@ function LinkedinIcon({ className }: { className?: string }) {
   );
 }
 
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M13.5 21v-8.1h2.72l.41-3.15h-3.13V7.75c0-.91.25-1.53 1.56-1.53h1.67V3.4c-.29-.04-1.28-.13-2.44-.13-2.42 0-4.07 1.47-4.07 4.18v2.33H7.5v3.15h2.72V21h3.28z" />
+    </svg>
+  );
+}
+
+function YoutubeIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M21.6 7.2c-.23-.87-.9-1.55-1.77-1.78C18.25 5 12 5 12 5s-6.25 0-7.83.42c-.87.23-1.54.91-1.77 1.78C2 8.8 2 12 2 12s0 3.2.4 4.8c.23.87.9 1.55 1.77 1.78C5.75 19 12 19 12 19s6.25 0 7.83-.42c.87-.23 1.54-.91 1.77-1.78.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM9.94 15.02V8.98L15.5 12l-5.56 3.02z" />
+    </svg>
+  );
+}
+
 const columnHeading = "text-lg font-light text-ink-300 mb-5";
 const linkStyle = "text-[15px] text-white hover:text-brand-400 transition-colors";
 
@@ -41,6 +67,33 @@ export default function Footer() {
               className="flex size-10 items-center justify-center rounded-full border border-white/25 text-white hover:border-brand-400 hover:text-brand-400 transition-colors"
             >
               <LinkedinIcon className="size-4" />
+            </a>
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Cynosure Recycling on Instagram"
+              className="flex size-10 items-center justify-center rounded-full border border-white/25 text-white hover:border-brand-400 hover:text-brand-400 transition-colors"
+            >
+              <InstagramIcon className="size-4" />
+            </a>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Cynosure Recycling on Facebook"
+              className="flex size-10 items-center justify-center rounded-full border border-white/25 text-white hover:border-brand-400 hover:text-brand-400 transition-colors"
+            >
+              <FacebookIcon className="size-4" />
+            </a>
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Cynosure Recycling on YouTube"
+              className="flex size-10 items-center justify-center rounded-full border border-white/25 text-white hover:border-brand-400 hover:text-brand-400 transition-colors"
+            >
+              <YoutubeIcon className="size-4" />
             </a>
           </div>
         </div>
