@@ -21,7 +21,15 @@ export default function Header() {
               alt="Cynosure Recycling Private Limited"
               width={280}
               height={56}
-              className="h-6 w-auto"
+              className="h-6 w-auto dark:hidden"
+              priority
+            />
+            <Image
+              src="/images/logo-horizontal-dark.png"
+              alt="Cynosure Recycling Private Limited"
+              width={280}
+              height={56}
+              className="hidden h-6 w-auto dark:block"
               priority
             />
           </Link>
