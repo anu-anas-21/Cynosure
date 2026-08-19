@@ -237,11 +237,13 @@ export default async function ServiceDetailPage({
                   <div className="mt-3 space-y-1.5">
                     {matches.map((match, i) => (
                       <p key={i} className="text-sm text-ink-500">
-                        {isOperational
-                          ? match.capacity !== null
-                            ? `${formatIndianNumber(match.capacity)} ${match.unit}`
-                            : "Available"
-                          : "Launching soon"}
+                        {!isOperational
+                          ? "Launching soon"
+                          : match.comingSoon
+                            ? "Coming Soon"
+                            : match.capacity !== null
+                              ? `${formatIndianNumber(match.capacity)} ${match.unit}`
+                              : "Available"}
                         {match.note && (
                           <span className="text-ink-400"> — {match.note}</span>
                         )}

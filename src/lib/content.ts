@@ -290,6 +290,8 @@ export type FacilityService = {
   capacity: number | null;
   unit: string;
   note?: string;
+  /** True when the facility is operational but this specific service isn't live yet (shown as "Coming Soon"). */
+  comingSoon?: boolean;
 };
 
 export const facilities = [
@@ -350,7 +352,7 @@ export const facilities = [
       { slug: "non-ferrous", name: "Non-Ferrous Recycling", capacity: 30000, unit: "MT/Annum" },
       { slug: "tyre-waste", name: "Tyre Recycling", capacity: 35000, unit: "MT/Annum" },
       { slug: "elv-recycling", name: "Vehicle Recycling", capacity: 20000, unit: "Vehicles/Annum" },
-      { slug: "biomedical", name: "Biomedical Recycling", capacity: null, unit: "" },
+      { slug: "biomedical", name: "Biomedical Recycling", capacity: null, unit: "", comingSoon: true },
       { slug: "battery-waste", name: "Battery Waste Management", capacity: null, unit: "" },
       { slug: "data-destruction", name: "Data Destruction & ITAD", capacity: null, unit: "" },
       { slug: "epr", name: "EPR Compliance", capacity: null, unit: "" },

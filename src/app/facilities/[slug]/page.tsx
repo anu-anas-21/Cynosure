@@ -105,11 +105,13 @@ export default async function FacilityPage({
                   </div>
                   <h3 className="mt-4 font-medium text-ink-700">{service.name}</h3>
                   <p className="mt-2 text-sm text-ink-500">
-                    {isOperational
-                      ? service.capacity !== null
-                        ? `${formatIndianNumber(service.capacity)} ${service.unit}`
-                        : "Available"
-                      : "Launching soon"}
+                    {!isOperational
+                      ? "Launching soon"
+                      : service.comingSoon
+                        ? "Coming Soon"
+                        : service.capacity !== null
+                          ? `${formatIndianNumber(service.capacity)} ${service.unit}`
+                          : "Available"}
                   </p>
                   {service.note && (
                     <p className="mt-1 text-xs text-ink-400">{service.note}</p>

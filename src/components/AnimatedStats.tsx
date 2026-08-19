@@ -64,7 +64,14 @@ export default function AnimatedStats() {
             <div className="grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2">
               {statsBand.slice(0, 6).map((stat) => (
                 <div key={stat.label}>
-                  <Counter target={stat.target} decimals={stat.decimals} suffix={stat.suffix} />
+                  <div className="flex items-baseline gap-3">
+                    <Counter target={stat.target} decimals={stat.decimals} suffix={stat.suffix} />
+                    {stat.label === "Operating Facilities Across India" && (
+                      <span className="text-sm font-medium text-brand-600">
+                        +2 Upcoming
+                      </span>
+                    )}
+                  </div>
                   <p className="mt-2 text-base text-ink-600">{stat.label}</p>
                 </div>
               ))}
