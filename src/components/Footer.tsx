@@ -51,7 +51,7 @@ export default function Footer() {
             alt={company.name}
             width={220}
             height={44}
-            className="h-10 w-auto"
+            className="h-8 w-auto"
           />
           <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-ink-300">
             Your end-to-end partner for e-waste, plastic, battery, tyre, and
