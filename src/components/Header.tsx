@@ -3,13 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { navigation } from "@/lib/content";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [openSubItem, setOpenSubItem] = useState<string | null>(null);
   const [mobileSubOpen, setMobileSubOpen] = useState<string | null>(null);
+  const [mobileSubSubOpen, setMobileSubSubOpen] = useState<string | null>(null);
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-[0_1px_4px_rgba(0,0,0,0.08)]">
@@ -45,15 +47,48 @@ export default function Header() {
                 {item.children && openMenu === item.label && (
                   <div className="absolute left-0 top-full w-72">
                     <div className="bg-white py-3 shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="block px-6 py-2.5 text-[15px] text-ink-600 hover:text-brand-500 transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      {item.children.map((child) =>
+                        child.children ? (
+                          <div
+                            key={child.label}
+                            className="relative"
+                            onMouseEnter={() => setOpenSubItem(child.label)}
+                            onMouseLeave={() => setOpenSubItem(null)}
+                          >
+                            <div
+                              className={`flex cursor-default items-center justify-between px-6 py-2.5 text-[15px] transition-colors ${
+                                openSubItem === child.label ? "text-brand-500" : "text-ink-600"
+                              }`}
+                            >
+                              {child.label}
+                              <ChevronRight className="size-3.5" />
+                            </div>
+                            {openSubItem === child.label && (
+                              <div className="absolute left-full top-0 w-56">
+                                <div className="bg-white py-3 shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+                                  {child.children.map((sub) => (
+                                    <Link
+                                      key={sub.label}
+                                      href={sub.href}
+                                      className="block px-6 py-2.5 text-[15px] text-ink-600 hover:text-brand-500 transition-colors"
+                                    >
+                                      {sub.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.label}
+                            href={child.href}
+                            className="block px-6 py-2.5 text-[15px] text-ink-600 hover:text-brand-500 transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        )
+                      )}
                     </div>
                   </div>
                 )}
@@ -108,16 +143,49 @@ export default function Header() {
                 </div>
                 {item.children && mobileSubOpen === item.label && (
                   <div className="pb-2 pl-3">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.label}
-                        href={child.href}
-                        className="block py-2 text-sm text-ink-500"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
+                    {item.children.map((child) =>
+                      child.children ? (
+                        <div key={child.label}>
+                          <button
+                            className="flex w-full items-center justify-between py-2 text-sm text-ink-500"
+                            onClick={() =>
+                              setMobileSubSubOpen((v) => (v === child.label ? null : child.label))
+                            }
+                            aria-label={`Toggle ${child.label} submenu`}
+                          >
+                            {child.label}
+                            <ChevronDown
+                              className={`size-3.5 transition-transform ${
+                                mobileSubSubOpen === child.label ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+                          {mobileSubSubOpen === child.label && (
+                            <div className="pb-1 pl-3">
+                              {child.children.map((sub) => (
+                                <Link
+                                  key={sub.label}
+                                  href={sub.href}
+                                  className="block py-2 text-sm text-ink-400"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {sub.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <Link
+                          key={child.label}
+                          href={child.href}
+                          className="block py-2 text-sm text-ink-500"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {child.label}
+                        </Link>
+                      )
+                    )}
                   </div>
                 )}
               </div>

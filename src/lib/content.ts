@@ -716,6 +716,7 @@ type NavChild = {
   href: string;
   icon?: string;
   description?: string;
+  children?: { label: string; href: string }[];
 };
 
 type NavItem = {
@@ -731,8 +732,14 @@ export const navigation: NavItem[] = [
     children: [
       { label: "ITAD", href: "/itad" },
       { label: "Re-Commerce", href: "/re-commerce" },
-      { label: "EPR Solutions", href: "/epr/solutions" },
-      { label: "EPR Services", href: "/epr/services" },
+      {
+        label: "EPR",
+        href: "/epr/solutions",
+        children: [
+          { label: "Solutions", href: "/epr/solutions" },
+          { label: "Services", href: "/epr/services" },
+        ],
+      },
       { label: "Recycling", href: "/services" },
       { label: "Our Products", href: "/our-products" },
     ],
