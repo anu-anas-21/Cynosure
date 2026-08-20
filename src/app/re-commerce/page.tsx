@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Repeat,
@@ -66,20 +65,6 @@ export default function ReCommercePage() {
         title="Recovered value, returned to the supply chain"
         description="Before anything is recycled down to raw material, Cynosure's process is designed to recover reusable components and high-grade secondary materials — keeping value circulating instead of leaving it in a landfill."
       />
-
-      <section className="py-16 sm:py-20">
-        <div className="container-page">
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl">
-            <Image
-              src="/images/gallery/gal7.jpg"
-              alt="Component recovery machine at Cynosure's Meerut facility"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
 
       <section className="py-16 sm:py-20">
         <div className="container-page">

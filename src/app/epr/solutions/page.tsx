@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   FileCheck2,
@@ -54,20 +53,6 @@ export default function EprSolutionsPage() {
         title="What you get: registration, targets, and channelization handled"
         description="Cynosure builds the compliance infrastructure so producers, importers, and brand owners can meet their statutory EPR obligations without building it in-house."
       />
-
-      <section className="py-16 sm:py-20">
-        <div className="container-page">
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl">
-            <Image
-              src="/images/gallery/gal26.jpg"
-              alt="Security and compliance checkpoint at Cynosure's Meerut facility"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
 
       <section className="py-16 sm:py-20">
         <div className="container-page grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">

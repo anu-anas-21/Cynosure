@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Laptop,
@@ -67,20 +66,6 @@ export default function ItadPage() {
         title="IT asset disposition, built for security and accountability"
         description="From retired laptops and servers to full data-centre decommissioning, Cynosure manages the entire IT asset lifecycle with secure destruction, verifiable chain of custody, and certified recycling."
       />
-
-      <section className="py-16 sm:py-20">
-        <div className="container-page">
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl">
-            <Image
-              src="/images/gallery/gal1.jpg"
-              alt="Dismantling line at Cynosure's Meerut facility"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
 
       <section className="bg-ink-50 py-16 sm:py-20">
         <div className="container-page">
