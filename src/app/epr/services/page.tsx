@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FileCheck2, CheckCircle2, ArrowRight, ShieldCheck, Radar, Users2 } from "lucide-react";
+import { FileCheck2, CheckCircle2, ArrowRight, ShieldCheck, Radar, Users2, BadgeCheck } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import EprComplianceTabs from "@/components/EprComplianceTabs";
 import { eprServices, clientJourney, certifications, differentiators } from "@/lib/content";
@@ -69,8 +69,10 @@ export default function EprServicesPage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {services.map((feature) => (
               <div key={feature.title} className="rounded-2xl border border-ink-100 p-6">
-                <CheckCircle2 className="size-5 text-brand-500" />
-                <h3 className="mt-3 font-semibold text-ink-800">{feature.title}</h3>
+                <div className="flex size-11 items-center justify-center rounded-xl bg-brand-500 text-white">
+                  <CheckCircle2 className="size-5" />
+                </div>
+                <h3 className="mt-4 font-semibold text-ink-800">{feature.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">
                   {feature.description}
                 </p>
@@ -157,7 +159,8 @@ export default function EprServicesPage() {
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {certifications.general.map((cert) => (
               <div key={cert.code} className="rounded-2xl border border-ink-100 p-7 text-center">
-                <h3 className="text-lg font-bold text-ink-900">{cert.code}</h3>
+                <BadgeCheck className="mx-auto size-9 text-brand-500" />
+                <h3 className="mt-4 text-lg font-bold text-ink-900">{cert.code}</h3>
                 <p className="mt-1.5 text-sm text-ink-500">{cert.label}</p>
               </div>
             ))}
@@ -173,7 +176,9 @@ export default function EprServicesPage() {
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {included.map((item) => (
               <div key={item.label} className="flex flex-col items-center gap-3 rounded-2xl border border-ink-100 p-6 text-center">
-                <item.icon className="size-6 text-brand-500" />
+                <div className="flex size-12 items-center justify-center rounded-xl bg-brand-500 text-white">
+                  <item.icon className="size-6" />
+                </div>
                 <p className="text-sm font-semibold text-ink-800">{item.label}</p>
                 <p className="text-xs leading-relaxed text-ink-500">{item.description}</p>
               </div>

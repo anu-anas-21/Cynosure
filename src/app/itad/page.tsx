@@ -10,6 +10,7 @@ import {
   GraduationCap,
   HeartPulse,
   Factory,
+  BadgeCheck,
   ArrowRight,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -137,8 +138,10 @@ export default function ItadPage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {dataServices.features.map((feature) => (
               <div key={feature.title} className="rounded-2xl border border-ink-100 p-6">
-                <CheckCircle2 className="size-5 text-brand-500" />
-                <h3 className="mt-3 font-semibold text-ink-800">{feature.title}</h3>
+                <div className="flex size-11 items-center justify-center rounded-xl bg-brand-500 text-white">
+                  <CheckCircle2 className="size-5" />
+                </div>
+                <h3 className="mt-4 font-semibold text-ink-800">{feature.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">
                   {feature.description}
                 </p>
@@ -180,7 +183,9 @@ export default function ItadPage() {
                 key={sector.label}
                 className="flex flex-col items-center gap-3 rounded-2xl bg-white p-6 text-center shadow-sm"
               >
-                <sector.icon className="size-7 text-brand-500" />
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-brand-500 text-white">
+                  <sector.icon className="size-7" />
+                </div>
                 <p className="text-sm font-medium text-ink-700">{sector.label}</p>
               </div>
             ))}
@@ -201,7 +206,8 @@ export default function ItadPage() {
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {certifications.general.map((cert) => (
               <div key={cert.code} className="rounded-2xl border border-ink-100 p-7 text-center">
-                <h3 className="text-lg font-bold text-ink-900">{cert.code}</h3>
+                <BadgeCheck className="mx-auto size-9 text-brand-500" />
+                <h3 className="mt-4 text-lg font-bold text-ink-900">{cert.code}</h3>
                 <p className="mt-1.5 text-sm text-ink-500">{cert.label}</p>
               </div>
             ))}

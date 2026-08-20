@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { FileCheck2, CheckCircle2, ArrowRight, Factory, Building2, Boxes, Cog } from "lucide-react";
+import {
+  FileCheck2,
+  CheckCircle2,
+  ArrowRight,
+  Factory,
+  Building2,
+  Boxes,
+  Cog,
+  Cpu,
+  Recycle,
+  BatteryCharging,
+} from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { eprServices, clientJourney, faqs, certifications, wasteStreams } from "@/lib/content";
 
@@ -15,11 +26,17 @@ const solutions = eprServices.features.slice(0, 2);
 const buildSteps = clientJourney.slice(0, 2);
 const eprFaq = faqs.find((f) => f.question === "What is your approach to EPR compliance?");
 
+const segmentIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  "e-waste": Cpu,
+  "plastic-waste": Recycle,
+  "battery-waste": BatteryCharging,
+};
+
 const eprSegmentSlugs = ["e-waste", "plastic-waste", "battery-waste"];
 const eprSegments = eprSegmentSlugs.map((slug) => {
   const stream = wasteStreams.find((s) => s.slug === slug)!;
   const cert = certifications.streams.find((c) => c.name === stream.name)!;
-  return { ...stream, regulation: cert.points[0] };
+  return { ...stream, regulation: cert.points[0], icon: segmentIcons[slug] };
 });
 
 const builtFor = [
@@ -75,8 +92,10 @@ export default function EprSolutionsPage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {solutions.map((feature) => (
               <div key={feature.title} className="rounded-2xl border border-ink-100 p-6">
-                <CheckCircle2 className="size-5 text-brand-500" />
-                <h3 className="mt-3 font-semibold text-ink-800">{feature.title}</h3>
+                <div className="flex size-11 items-center justify-center rounded-xl bg-brand-500 text-white">
+                  <CheckCircle2 className="size-5" />
+                </div>
+                <h3 className="mt-4 font-semibold text-ink-800">{feature.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">
                   {feature.description}
                 </p>
@@ -127,7 +146,10 @@ export default function EprSolutionsPage() {
                 href={`/services/${segment.slug}`}
                 className="group flex flex-col rounded-2xl border border-ink-100 p-7 transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <h3 className="font-semibold text-ink-800">{segment.name}</h3>
+                <div className="flex size-11 items-center justify-center rounded-xl bg-brand-500 text-white">
+                  <segment.icon className="size-5" />
+                </div>
+                <h3 className="mt-4 font-semibold text-ink-800">{segment.name}</h3>
                 <p className="mt-2.5 text-sm leading-relaxed text-ink-500">
                   {segment.regulation}
                 </p>
@@ -157,7 +179,9 @@ export default function EprSolutionsPage() {
                 key={sector.label}
                 className="flex flex-col items-center gap-3 rounded-2xl bg-white p-6 text-center shadow-sm"
               >
-                <sector.icon className="size-7 text-brand-500" />
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-brand-500 text-white">
+                  <sector.icon className="size-7" />
+                </div>
                 <p className="text-sm font-medium text-ink-700">{sector.label}</p>
               </div>
             ))}

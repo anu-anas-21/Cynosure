@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Repeat, CheckCircle2, ArrowRight } from "lucide-react";
+import {
+  Repeat,
+  CheckCircle2,
+  ArrowRight,
+  Cpu,
+  Recycle,
+  BatteryCharging,
+  CircleDot,
+  Car,
+  Layers,
+  Syringe,
+} from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ProcessFlow from "@/components/ProcessFlow";
 import { wasteStreams, annualImpact } from "@/lib/content";
@@ -18,6 +29,16 @@ const recoveryProcess = [
   "Material Grading & Sorting",
   "Return to Supply Chain",
 ];
+
+const streamIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  "e-waste": Cpu,
+  "plastic-waste": Recycle,
+  "battery-waste": BatteryCharging,
+  "tyre-waste": CircleDot,
+  "elv-recycling": Car,
+  "non-ferrous": Layers,
+  biomedical: Syringe,
+};
 
 const recoveryPoints = [
   {
@@ -73,7 +94,9 @@ export default function ReCommercePage() {
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {recoveryPoints.map((point) => (
               <div key={point.title} className="rounded-2xl border border-ink-100 p-7">
-                <CheckCircle2 className="size-5 text-brand-500" />
+                <div className="flex size-11 items-center justify-center rounded-xl bg-brand-500 text-white">
+                  <CheckCircle2 className="size-5" />
+                </div>
                 <h3 className="mt-4 font-semibold text-ink-800">{point.title}</h3>
                 <p className="mt-2.5 text-sm leading-relaxed text-ink-500">
                   {point.description}
@@ -126,9 +149,14 @@ export default function ReCommercePage() {
             </h2>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {wasteStreams.map((stream) => (
+            {wasteStreams.map((stream) => {
+              const Icon = streamIcons[stream.slug] ?? Recycle;
+              return (
               <div key={stream.slug} className="rounded-2xl bg-white p-7 shadow-sm">
-                <h3 className="font-semibold text-ink-800">{stream.name}</h3>
+                <div className="flex size-11 items-center justify-center rounded-xl bg-brand-500 text-white">
+                  <Icon className="size-5" />
+                </div>
+                <h3 className="mt-4 font-semibold text-ink-800">{stream.name}</h3>
                 <p className="mt-2.5 text-sm leading-relaxed text-ink-500">
                   {stream.outputs}
                 </p>
@@ -140,7 +168,8 @@ export default function ReCommercePage() {
                   <ArrowRight className="size-4" />
                 </Link>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

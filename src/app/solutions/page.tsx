@@ -82,8 +82,8 @@ export default function SolutionsPage() {
                 href={solution.href}
                 className="group flex flex-col rounded-2xl border border-ink-100 p-7 transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="flex size-12 items-center justify-center rounded-xl bg-brand-500 text-white">
-                  <solution.icon className="size-6" />
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-brand-500 text-white">
+                  <solution.icon className="size-7" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-ink-800">
                   {solution.title}

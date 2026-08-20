@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Package, ArrowRight } from "lucide-react";
+import { Package, ArrowRight, BadgeCheck } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { wasteStreams, annualImpact, certifications } from "@/lib/content";
 
@@ -65,8 +65,8 @@ export default function OurProductsPage() {
                 key={product.slug}
                 className="flex flex-col rounded-2xl border border-ink-100 bg-white p-7"
               >
-                <div className="flex size-12 items-center justify-center rounded-xl bg-brand-500 text-white">
-                  <Package className="size-6" />
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-brand-500 text-white">
+                  <Package className="size-7" />
                 </div>
                 <h3 className="mt-5 text-lg font-semibold text-ink-800">
                   {product.name}
@@ -133,7 +133,8 @@ export default function OurProductsPage() {
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {certifications.general.map((cert) => (
               <div key={cert.code} className="rounded-2xl border border-ink-100 bg-white p-7 text-center">
-                <h3 className="text-lg font-bold text-ink-900">{cert.code}</h3>
+                <BadgeCheck className="mx-auto size-9 text-brand-500" />
+                <h3 className="mt-4 text-lg font-bold text-ink-900">{cert.code}</h3>
                 <p className="mt-1.5 text-sm text-ink-500">{cert.label}</p>
               </div>
             ))}
