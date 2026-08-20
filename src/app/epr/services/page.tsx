@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { FileCheck2, CheckCircle2, ArrowRight, ShieldCheck, Radar, Users2 } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -30,6 +31,20 @@ export default function EprServicesPage() {
         title="How we support you: tracking, reporting, and engagement"
         description="Beyond registration and target fulfilment, Cynosure stays engaged year-round with real-time tracking, verifiable reporting, and awareness programs that keep your EPR obligations audit-ready."
       />
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl">
+            <Image
+              src="/images/gallery/gal19.jpg"
+              alt="Compliance and operations management at Cynosure's Meerut facility"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 sm:py-20">
         <div className="container-page grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">

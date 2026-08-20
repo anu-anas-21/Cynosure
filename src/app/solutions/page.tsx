@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Laptop, Repeat, FileCheck2, Recycle, Package, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -65,7 +66,16 @@ export default function SolutionsPage() {
 
       <section className="py-16 sm:py-20">
         <div className="container-page">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl">
+            <Image
+              src="/images/gallery/gal21.jpg"
+              alt="Front view of Cynosure's Meerut facility"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {solutions.map((solution) => (
               <Link
                 key={solution.title}

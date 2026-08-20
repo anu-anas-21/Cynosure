@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Package, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -26,6 +27,20 @@ export default function OurProductsPage() {
         title="Secondary raw materials, graded and supply-ready"
         description="Every material Cynosure recovers is sorted, graded, and documented before it leaves our facilities — ready to re-enter manufacturing supply chains instead of a landfill."
       />
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl">
+            <Image
+              src="/images/gallery/gal9.jpg"
+              alt="Material storage area at Cynosure's Meerut facility"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 sm:py-20">
         <div className="container-page">
