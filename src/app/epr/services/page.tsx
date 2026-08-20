@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FileCheck2, CheckCircle2, ArrowRight } from "lucide-react";
+import { FileCheck2, CheckCircle2, ArrowRight, ShieldCheck, Radar, Users2 } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { eprServices, clientJourney, certifications } from "@/lib/content";
+import EprComplianceTabs from "@/components/EprComplianceTabs";
+import { eprServices, clientJourney, certifications, differentiators } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "EPR Services | Cynosure Recycling",
@@ -12,6 +13,14 @@ export const metadata: Metadata = {
 
 const services = eprServices.features.slice(2, 4);
 const supportSteps = clientJourney.slice(4, 6);
+const eprComplianceStreams = certifications.streams.filter((stream) =>
+  ["E-Waste Recycling", "Plastic Waste Recycling", "Battery Waste Management"].includes(stream.name)
+);
+const included = [
+  { icon: Radar, label: "Regulatory update alerts", description: "Notified when EPR rules or CPCB portal requirements change." },
+  { icon: ShieldCheck, label: "Audit-ready documentation", description: "GPS-tracked logistics and digital records for every consignment." },
+  { icon: Users2, label: "One point of contact", description: "A dedicated team, not a rotating queue of case handlers." },
+];
 
 export default function EprServicesPage() {
   return (
@@ -60,6 +69,46 @@ export default function EprServicesPage() {
         <div className="container-page">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Our Difference
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              We don&apos;t just file paperwork
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {differentiators.map((item, index) => (
+              <div key={item.title} className="rounded-2xl bg-white p-7 shadow-sm">
+                <span className="text-3xl font-bold text-brand-200">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 font-semibold text-ink-800">{item.title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-ink-500">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Compliance By Category
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              What we&apos;re authorized for, stream by stream
+            </h2>
+          </div>
+          <div className="mt-10">
+            <EprComplianceTabs streams={eprComplianceStreams} />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
               What Ongoing Looks Like
             </span>
             <h2 className="mt-3 text-4xl font-light sm:text-5xl">
@@ -95,6 +144,23 @@ export default function EprServicesPage() {
               <div key={cert.code} className="rounded-2xl border border-ink-100 p-7 text-center">
                 <h3 className="text-lg font-bold text-ink-900">{cert.code}</h3>
                 <p className="mt-1.5 text-sm text-ink-500">{cert.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <p className="text-center text-xs font-semibold uppercase tracking-wide text-brand-600">
+            Included With Every Engagement
+          </p>
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {included.map((item) => (
+              <div key={item.label} className="flex flex-col items-center gap-3 rounded-2xl border border-ink-100 p-6 text-center">
+                <item.icon className="size-6 text-brand-500" />
+                <p className="text-sm font-semibold text-ink-800">{item.label}</p>
+                <p className="text-xs leading-relaxed text-ink-500">{item.description}</p>
               </div>
             ))}
           </div>

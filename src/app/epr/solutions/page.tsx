@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FileCheck2, CheckCircle2, ArrowRight } from "lucide-react";
+import { FileCheck2, CheckCircle2, ArrowRight, Factory, Building2, Boxes, Cog } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { eprServices, clientJourney, faqs } from "@/lib/content";
+import { eprServices, clientJourney, faqs, certifications, wasteStreams } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "EPR Solutions | Cynosure Recycling",
@@ -13,6 +13,20 @@ export const metadata: Metadata = {
 const solutions = eprServices.features.slice(0, 2);
 const buildSteps = clientJourney.slice(0, 2);
 const eprFaq = faqs.find((f) => f.question === "What is your approach to EPR compliance?");
+
+const eprSegmentSlugs = ["e-waste", "plastic-waste", "battery-waste"];
+const eprSegments = eprSegmentSlugs.map((slug) => {
+  const stream = wasteStreams.find((s) => s.slug === slug)!;
+  const cert = certifications.streams.find((c) => c.name === stream.name)!;
+  return { ...stream, regulation: cert.points[0] };
+});
+
+const builtFor = [
+  { icon: Factory, label: "Producers" },
+  { icon: Building2, label: "Brand Owners" },
+  { icon: Boxes, label: "Importers" },
+  { icon: Cog, label: "Manufacturers" },
+];
 
 export default function EprSolutionsPage() {
   return (
@@ -75,6 +89,61 @@ export default function EprSolutionsPage() {
                 <p className="mt-3 text-sm leading-relaxed text-ink-500">
                   {step.description}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Segments We Serve
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              EPR-regulated categories we cover
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {eprSegments.map((segment) => (
+              <Link
+                key={segment.slug}
+                href={`/services/${segment.slug}`}
+                className="group flex flex-col rounded-2xl border border-ink-100 p-7 transition-all hover:-translate-y-1 hover:shadow-lg"
+              >
+                <h3 className="font-semibold text-ink-800">{segment.name}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-ink-500">
+                  {segment.regulation}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+                  View service
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-ink-50 py-16 sm:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              Built For
+            </span>
+            <h2 className="mt-3 text-4xl font-light sm:text-5xl">
+              Who we build EPR solutions for
+            </h2>
+          </div>
+          <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {builtFor.map((sector) => (
+              <div
+                key={sector.label}
+                className="flex flex-col items-center gap-3 rounded-2xl bg-white p-6 text-center shadow-sm"
+              >
+                <sector.icon className="size-7 text-brand-500" />
+                <p className="text-sm font-medium text-ink-700">{sector.label}</p>
               </div>
             ))}
           </div>
